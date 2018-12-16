@@ -5,8 +5,9 @@
  */
 package View.Kunjungan;
 
+import Moduls.Pertanyaan.ModelPertanyaan;
+import Moduls.Pertanyaan.ControllerPertanyaan;
 import Moduls.Anggota.*;
-import Moduls.Kunjungan.*;
 import View.Dashboard.Dashboard;
 import View.Dashboard.Main;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class Kunjungan extends javax.swing.JFrame {
     /**
      * Creates new form Book
      */
-    ArrayList<ModelKunjungan> list;
+    ArrayList<ModelPertanyaan> list;
     ArrayList<ModelAnggota> listAnggota;
     
     public Kunjungan() {
@@ -45,7 +46,7 @@ public class Kunjungan extends javax.swing.JFrame {
     
     public void get_data() {
         
-        list = new ControllerKunjungan().view();
+        list = new ControllerPertanyaan().view();
         DefaultTableModel model = (DefaultTableModel)table_kunjungan.getModel();
         model.getDataVector().removeAllElements();
         model.fireTableDataChanged();
@@ -364,7 +365,7 @@ public class Kunjungan extends javax.swing.JFrame {
         
         System.out.println(ID);
         
-        Boolean action = new ControllerKunjungan().delete(ID);
+        Boolean action = new ControllerPertanyaan().delete(ID);
           
         if(action) {
             JOptionPane.showMessageDialog(this, "Berhasil Menghapus data");
@@ -389,7 +390,7 @@ public class Kunjungan extends javax.swing.JFrame {
         
         ModelAnggota data = listAnggota.get(selectedIndex);
 
-        Boolean action = new ControllerKunjungan().create(
+        Boolean action = new ControllerPertanyaan().create(
             data.getNis(),
             tanggal
         );

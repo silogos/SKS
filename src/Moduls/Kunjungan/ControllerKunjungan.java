@@ -1,5 +1,6 @@
 package Moduls.Kunjungan;
 
+import Moduls.Pertanyaan.ModelPertanyaan;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,8 +14,8 @@ import libs.DBConnect;
  */
 public class ControllerKunjungan {
     
-    public ArrayList<ModelKunjungan> view() {
-        ArrayList<ModelKunjungan> list = new ArrayList<>();
+    public ArrayList<ModelPertanyaan> view() {
+        ArrayList<ModelPertanyaan> list = new ArrayList<>();
         try {
             Connection connection = DBConnect.Conn();
             String sql = "SELECT "
@@ -27,9 +28,9 @@ public class ControllerKunjungan {
                     + "LEFT JOIN anggota ON kunjungan.nis = anggota.nis";
             Statement stat = (Statement) connection.createStatement();
             ResultSet rs = stat.executeQuery(sql);
-            ModelKunjungan data;
+            ModelPertanyaan data;
             while (rs.next()) {
-                data = new ModelKunjungan(
+                data = new ModelPertanyaan(
                     rs.getInt("id"), 
                     rs.getString("nis"),
                     rs.getString("nama"),
@@ -45,8 +46,8 @@ public class ControllerKunjungan {
         return list;
     }
     
-    public ModelKunjungan viewByID(int ID) {
-        ModelKunjungan data = null;
+    public ModelPertanyaan viewByID(int ID) {
+        ModelPertanyaan data = null;
         try {
             Connection connection = DBConnect.Conn();
             String sql = "SELECT "
@@ -61,7 +62,7 @@ public class ControllerKunjungan {
             Statement stat = (Statement) connection.createStatement();
             ResultSet rs = stat.executeQuery(sql);
             if(rs.next()) {
-                data = new ModelKunjungan(
+                data = new ModelPertanyaan(
                     rs.getInt("id"), 
                     rs.getString("nis"),
                     rs.getString("nama"),

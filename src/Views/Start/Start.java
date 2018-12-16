@@ -13,7 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import Moduls.User.ControllerUser;
-
+import Views.Pertanyaan.Pertanyaan;
 /**
  *
  * @author Kohar
@@ -306,8 +306,10 @@ public class Start extends javax.swing.JFrame {
         // TODO add your handling code here:
         ControllerUser cu = new ControllerUser();
         String namas = nama.getText();
-        if(cu.create(namas)) {
-            JOptionPane.showMessageDialog(null, "berhasil Bos");
+        if(cu.create(namas)) {;
+            Pertanyaan pertanyaan = new Pertanyaan();
+            pertanyaan.show();
+            this.dispose();
         }
     }//GEN-LAST:event_jPanel_mulaiMouseClicked
 

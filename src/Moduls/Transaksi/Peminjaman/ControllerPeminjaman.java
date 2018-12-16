@@ -1,6 +1,5 @@
 package Moduls.Transaksi.Peminjaman;
 
-import Moduls.Kunjungan.*;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;

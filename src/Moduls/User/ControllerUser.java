@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import libs.DBConnect;
+import libs.Session;
 
 /**
  *
@@ -36,9 +37,15 @@ public class ControllerUser {
         try {
             Connection connection = DBConnect.Conn();
             String query = "INSERT INTO `user` VALUES (NULL, ?)";
-            PreparedStatement stat = connection.prepareStatement(query);
+            PreparedStatement stat = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             stat.setString(1, nama);
-            int rs = stat.executeUpdate();
+            int exe = stat.executeUpdate();
+            ResultSet rs = stat.getGeneratedKeys();
+            if (rs.next()){
+                int inserted_id=rs.getInt(1);
+                Session.setID(inserted_id);
+                Session.setNama(nama);
+            }
             return true;
         } catch (SQLException e) {
             System.err.println(e.getMessage());

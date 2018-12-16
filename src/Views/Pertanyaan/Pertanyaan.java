@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import libs.Session;
 import static sun.security.jgss.GSSUtil.login;
 
 /**
@@ -131,6 +132,11 @@ public class Pertanyaan extends javax.swing.JFrame {
         jLabel1.setText("Anda adalah orang seperti apa ?");
 
         pilihan_a.setText("jButton1");
+        pilihan_a.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pilihan_aMouseClicked(evt);
+            }
+        });
 
         pilihan_b.setText("jButton2");
 
@@ -253,6 +259,11 @@ public class Pertanyaan extends javax.swing.JFrame {
                
        
     }//GEN-LAST:event_jPanel_closeMouseClicked
+
+    private void pilihan_aMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pilihan_aMouseClicked
+        // TODO add your handling code here:
+        System.out.println("pressed: "+ Session.getNama());
+    }//GEN-LAST:event_pilihan_aMouseClicked
 
     /**
      * @param args the command line arguments

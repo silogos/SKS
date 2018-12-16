@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
--- http://www.phpmyadmin.net
+-- version 4.8.0
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 09 Des 2018 pada 08.54
--- Versi Server: 10.1.19-MariaDB
--- PHP Version: 7.0.13
+-- Generation Time: Dec 16, 2018 at 02:48 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 7.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -25,36 +27,20 @@ USE `artificial_intelegen`;
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `daftar`
---
-
-CREATE TABLE `daftar` (
-  `id_daftar` int(10) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `jenis_kelamin` varchar(20) NOT NULL,
-  `e_mail` varchar(50) NOT NULL,
-  `password` varchar(20) NOT NULL,
-  `konfir_pass` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `hasil`
+-- Table structure for table `hasil`
 --
 
 CREATE TABLE `hasil` (
   `hasil_id` int(10) NOT NULL,
   `user_id` int(10) NOT NULL,
   `question_id` int(10) NOT NULL,
-  `answer_kode` varchar(20) NOT NULL,
-  `id_ujian` varchar(20) NOT NULL
+  `answer_kode` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `kepribadian`
+-- Table structure for table `kepribadian`
 --
 
 CREATE TABLE `kepribadian` (
@@ -66,7 +52,36 @@ CREATE TABLE `kepribadian` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `question`
+-- Table structure for table `profesi`
+--
+
+CREATE TABLE `profesi` (
+  `id` int(11) NOT NULL,
+  `kode` varchar(3) NOT NULL,
+  `nama` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `profesi`
+--
+
+INSERT INTO `profesi` (`id`, `kode`, `nama`) VALUES
+(1, 'D01', 'Pemimpin'),
+(2, 'D02', 'Manager'),
+(4, 'I01', 'Marketing'),
+(5, 'I02', 'Motivator'),
+(6, 'I03', 'Presenter'),
+(7, 'I04', 'Negosiator'),
+(8, 'S01', 'Staf'),
+(9, 'S02', 'Administrasi'),
+(10, 'C01', 'Bagian Keuangan'),
+(11, 'C02', 'Pengawas'),
+(12, 'C03', 'Audit');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `question`
 --
 
 CREATE TABLE `question` (
@@ -78,7 +93,7 @@ CREATE TABLE `question` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `question`
+-- Dumping data for table `question`
 --
 
 INSERT INTO `question` (`question_id`, `dominan`, `influens`, `complaien`, `stediness`) VALUES
@@ -126,32 +141,29 @@ INSERT INTO `question` (`question_id`, `dominan`, `influens`, `complaien`, `sted
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
-  `user_id` int(10) NOT NULL,
-  `nama` varchar(20) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `nama` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`user_id`, `nama`) VALUES
-(1, 'Rizal'),
-(2, 'Amin'),
-(3, 'Ari');
+(1, 'rizal'),
+(2, 'amin'),
+(3, 'amin'),
+(4, 'amin'),
+(5, 'amin'),
+(6, 'aslina');
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `daftar`
---
-ALTER TABLE `daftar`
-  ADD PRIMARY KEY (`id_daftar`);
 
 --
 -- Indexes for table `hasil`
@@ -166,6 +178,13 @@ ALTER TABLE `hasil`
 --
 ALTER TABLE `kepribadian`
   ADD PRIMARY KEY (`id_kepribadian`);
+
+--
+-- Indexes for table `profesi`
+--
+ALTER TABLE `profesi`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `kode` (`kode`);
 
 --
 -- Indexes for table `question`
@@ -184,24 +203,23 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `daftar`
+-- AUTO_INCREMENT for table `profesi`
 --
-ALTER TABLE `daftar`
-  MODIFY `id_daftar` int(10) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `profesi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
 --
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
   MODIFY `question_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
---
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
---
 
 --
--- Ketidakleluasaan untuk tabel `hasil`
+-- AUTO_INCREMENT for table `user`
 --
-ALTER TABLE `hasil`
-  ADD CONSTRAINT `hasil_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `user`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
