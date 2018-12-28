@@ -15,56 +15,74 @@ import libs.DBConnect;
  */
 public class ControllerPertanyaan {
     
-    private static int index = 0;
-    private static ArrayList<ModelPertanyaan> list = new ArrayList<>();
+    private ArrayList<ModelPertanyaan> list = new ArrayList<>();
     
-    public void getPertanyaan() {
+    
+//    public static void main (String[] args) {
+//        String s = "Memberi semangat|Petualang|teliti|mudah menyesuaikan diri";
+//        String[] data = s.split("\\|");
+//        System.out.println(Arrays.toString(data));
+//        System.out.println(data[0]);
+//    }
+    
+    public ControllerPertanyaan() {}
+    public ArrayList<ModelPertanyaan> getPertanyaan() {
         try {
             Connection connection = DBConnect.Conn();
-            String sql = "SELECT * from question ORDER BY RAND() LIMIT 10";
+            String sql = "SELECT " +
+                         "	question_id, " +
+                         "	GROUP_CONCAT(id) as id, " +
+                         "	GROUP_CONCAT(type) as type, " +
+                         "	GROUP_CONCAT(text SEPARATOR '|') as text " +
+                         "FROM `characteristic` " +
+                         "GROUP BY question_id " +
+                         "HAVING COUNT(id) = 4 " +
+                         "LIMIT 10";
             Statement stat = (Statement) connection.createStatement();
             ResultSet rs = stat.executeQuery(sql);
             ModelPertanyaan data;
             ArrayList<ModelPilihan> list_pilihan;
             while (rs.next()) {
                 list_pilihan = new ArrayList<>();
-                ModelPilihan dominan = new ModelPilihan(1, 0, rs.getString("dominan"));
-                ModelPilihan influens = new ModelPilihan(2, 1, rs.getString("influens"));
-                ModelPilihan complaien = new ModelPilihan(3, 2, rs.getString("complaien"));
-                ModelPilihan stediness = new ModelPilihan(4, 3, rs.getString("stediness"));
-                list_pilihan.add(dominan);
-                list_pilihan.add(influens);
-                list_pilihan.add(complaien);
-                list_pilihan.add(stediness);
+                String[] list_id, list_type, list_text;
+                list_id = rs.getString("id").split(",");
+                list_type = rs.getString("type").split(",");
+                list_text = rs.getString("text").split("\\|");
+                System.out.println(rs.getString("text"));
+                for(int i = 0; i < 4; i++){
+                    ModelPilihan item;
+                    item = new ModelPilihan(
+                               Integer.parseInt(list_id[i]), 
+                               Integer.parseInt(list_type[i]), 
+                               list_text[i]
+                           );
+                    list_pilihan.add(item);
+                }
                 Collections.shuffle(list_pilihan);
                 data = new ModelPertanyaan(rs.getInt("question_id"), list_pilihan);
-                
-                getList().add(data);
+                list.add(data);
             }
+            return list;
         } catch (SQLException e) {
             System.err.println(e.getMessage());
+            return null;
         }
     }
     
     public ModelPertanyaan viewByIndex(int ID) {
-       ModelPertanyaan item = getList().get(getIndex());
-       return item;
+       return this.list.get(ID);
     }
     
-    public boolean create(String dominan, String influens, String complaien, String stediness) {
+    public boolean create(ArrayList<ModelPilihan> list_pilihan) {
         try {
             Connection connection = DBConnect.Conn();
-            String query = "INSERT INTO `question` (dominan, influens, complaien, stediness) VALUES (?, ?, ?, ?)";
-            PreparedStatement stat = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            stat.setString(1, dominan);
-            stat.setString(2, influens);
-            stat.setString(3, complaien);
-            stat.setString(4, stediness);
-            int exe = stat.executeUpdate();
-            ResultSet rs = stat.getGeneratedKeys();
-            if (rs.next()){
-                int inserted_id=rs.getInt(1);
+            String query = "INSERT INTO `question` (`id`) VALUES (NULL);";
+                   query += "INSERT INTO `characteristic` (`question_id`, `type`, `text`) VALUES ";
+            for(ModelPilihan pilihan : list_pilihan ){
+                query += "(LAST_INSERT_ID(), "+ pilihan.getType() +", "+ pilihan.getJawaban() +"),";
             }
+            PreparedStatement stat = connection.prepareStatement(query);
+            int exe = stat.executeUpdate();
             return true;
         } catch (SQLException e) {
             System.err.println(e.getMessage());
@@ -72,48 +90,36 @@ public class ControllerPertanyaan {
         }
     }
     
-    public boolean delete(int ID) {
+    public boolean delete(int question_id) {
         try {
             Connection connection = DBConnect.Conn();
-            String query = "DELETE FROM `question` WHERE `question_id` = ?";
-            PreparedStatement stat = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            stat.setInt(1, ID);
+            String query = "DELETE FROM `question` WHERE `id` = "+ question_id +";"
+                         + "DELETE FROM `rules` WHERE `characteristic_id` IN "
+                         + "(SELECT id FROM `characteristic` WHERE `question_id` =  "+ question_id +")"
+                         + "DELETE FROM `characteristic` WHERE `question_id` = "+ question_id +";";
+            PreparedStatement stat = connection.prepareStatement(query);
             int exe = stat.executeUpdate();
-            ResultSet rs = stat.getGeneratedKeys();
-            if (rs.next()){
-                int inserted_id=rs.getInt(1);
-            }
             return true;
         } catch (SQLException e) {
             System.err.println(e.getMessage());
             return false;
         }
     }
-    /**
-     * @return the index
-     */
-    public static int getIndex() {
-        return index;
-    }
-
-    /**
-     * @param aIndex the index to set
-     */
-    public static void setIndex(int aIndex) {
-        index = aIndex;
-    }
-
     /**
      * @return the list
      */
-    public static ArrayList<ModelPertanyaan> getList() {
+    public ArrayList<ModelPertanyaan> getList() {
         return list;
     }
 
     /**
      * @param aList the list to set
      */
-    public static void setList(ArrayList<ModelPertanyaan> aList) {
+    public void setList(ArrayList<ModelPertanyaan> aList) {
         list = aList;
+    }
+    
+    public int getTotalPertanyaan() {
+        return list.size();
     }
 }

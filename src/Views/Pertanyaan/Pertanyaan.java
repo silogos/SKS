@@ -5,10 +5,13 @@
  */
 package Views.Pertanyaan;
 
+import Moduls.Pertanyaan.*;
 import Views.Admin.Login;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -24,14 +27,56 @@ public class Pertanyaan extends javax.swing.JFrame {
     /**
      * Creates new form Start
      */
-    ImageIcon imageIcon;
-      public Pertanyaan() {
+    
+    private ControllerPertanyaan cp;
+    private ArrayList<ModelJawaban> listJawaban = new ArrayList<>();
+    private int index;
+    private ImageIcon imageIcon;
+    private int jmlPertanyaan;
+    
+    public Pertanyaan() {
         initComponents();
         imageIcon = new ImageIcon("src/AI/SKSedit.png");
         setIconImage(imageIcon.getImage());
        
-        
-        
+        cp = new ControllerPertanyaan();
+        cp.getPertanyaan();
+        jmlPertanyaan = cp.getTotalPertanyaan();
+        this.index = 0;
+        this.setPilihan();
+    }
+    
+    public void setPilihan() {
+        ModelPertanyaan mp = cp.viewByIndex(this.index);
+        ArrayList<ModelPilihan> ampil = mp.getPilihan();
+        ModelPilihan pil1 = ampil.get(0);
+        pilihan_a.setText(pil1.getJawaban());
+        ModelPilihan pil2 = ampil.get(1);
+        pilihan_b.setText(pil2.getJawaban());
+        ModelPilihan pil3 = ampil.get(2);
+        pilihan_c.setText(pil3.getJawaban());
+        ModelPilihan pil4 = ampil.get(3);
+        pilihan_d.setText(pil4.getJawaban());
+    }
+    
+    public void jawab(int idxPilihan) {
+        ModelPertanyaan mp = cp.viewByIndex(this.index);
+        ArrayList<ModelPilihan> ampil = mp.getPilihan();
+        ModelJawaban mj = new ModelJawaban();
+        mj.setUser_id(Session.getID());
+        mj.setCharacteristic_id(ampil.get(idxPilihan).getType());
+        listJawaban.add(mj);
+        nextPertanyaan();
+    }
+    
+    public void nextPertanyaan() {
+        System.out.println(this.index + " < " + this.jmlPertanyaan);
+        if(this.index < this.jmlPertanyaan - 1){
+            this.index = this.index + 1;
+            setPilihan(); 
+        } else {
+            System.out.println("selesai");
+        }
     }
 
     /**
@@ -55,6 +100,7 @@ public class Pertanyaan extends javax.swing.JFrame {
         pilihan_b = new javax.swing.JButton();
         pilihan_c = new javax.swing.JButton();
         pilihan_d = new javax.swing.JButton();
+        next = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -131,18 +177,60 @@ public class Pertanyaan extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Anda adalah orang seperti apa ?");
 
-        pilihan_a.setText("jButton1");
+        pilihan_a.setText("A");
         pilihan_a.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 pilihan_aMouseClicked(evt);
             }
         });
+        pilihan_a.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pilihan_aActionPerformed(evt);
+            }
+        });
 
-        pilihan_b.setText("jButton2");
+        pilihan_b.setText("B");
+        pilihan_b.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pilihan_bMouseClicked(evt);
+            }
+        });
+        pilihan_b.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pilihan_bActionPerformed(evt);
+            }
+        });
 
-        pilihan_c.setText("jButton3");
+        pilihan_c.setText("C");
+        pilihan_c.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pilihan_cMouseClicked(evt);
+            }
+        });
+        pilihan_c.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pilihan_cActionPerformed(evt);
+            }
+        });
 
-        pilihan_d.setText("jButton4");
+        pilihan_d.setText("D");
+        pilihan_d.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pilihan_dMouseClicked(evt);
+            }
+        });
+        pilihan_d.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pilihan_dActionPerformed(evt);
+            }
+        });
+
+        next.setText("next");
+        next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -160,8 +248,13 @@ public class Pertanyaan extends javax.swing.JFrame {
                 .addGap(111, 111, 111))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(126, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(137, 137, 137))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(137, 137, 137))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(next)
+                        .addContainerGap())))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,7 +272,9 @@ public class Pertanyaan extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(52, 52, 52)
                         .addComponent(pilihan_d)))
-                .addContainerGap(136, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
+                .addComponent(next)
+                .addGap(19, 19, 19))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -246,24 +341,56 @@ public class Pertanyaan extends javax.swing.JFrame {
 
     private void jPanel_closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_closeMouseClicked
         // TODO add your handling code here:
-         int confirm = JOptionPane.showConfirmDialog(this,
-                "Konfirmasi Keluar Aplikasi",
-                "Yakin untuk keluar dari program",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE);
-                
-          
+        int confirm = JOptionPane.showConfirmDialog(this,
+            "Konfirmasi Keluar Aplikasi",
+            "Yakin untuk keluar dari program",
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE);
         if (confirm == JOptionPane.YES_OPTION) 
            System.exit(0);
-           ;            
-               
-       
     }//GEN-LAST:event_jPanel_closeMouseClicked
 
     private void pilihan_aMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pilihan_aMouseClicked
         // TODO add your handling code here:
-        System.out.println("pressed: "+ Session.getNama());
+        jawab(0);
     }//GEN-LAST:event_pilihan_aMouseClicked
+
+    private void pilihan_aActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pilihan_aActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pilihan_aActionPerformed
+
+    private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
+        // TODO add your handling code here:
+        this.index++;
+        this.setPilihan();
+    }//GEN-LAST:event_nextActionPerformed
+
+    private void pilihan_bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pilihan_bActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pilihan_bActionPerformed
+
+    private void pilihan_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pilihan_cActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pilihan_cActionPerformed
+
+    private void pilihan_dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pilihan_dActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pilihan_dActionPerformed
+
+    private void pilihan_bMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pilihan_bMouseClicked
+        // TODO add your handling code here:
+        jawab(1);
+    }//GEN-LAST:event_pilihan_bMouseClicked
+
+    private void pilihan_cMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pilihan_cMouseClicked
+        // TODO add your handling code here:
+        jawab(2);
+    }//GEN-LAST:event_pilihan_cMouseClicked
+
+    private void pilihan_dMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pilihan_dMouseClicked
+        // TODO add your handling code here:
+        jawab(3);
+    }//GEN-LAST:event_pilihan_dMouseClicked
 
     /**
      * @param args the command line arguments
@@ -340,6 +467,7 @@ public class Pertanyaan extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel_close;
+    private javax.swing.JButton next;
     private javax.swing.JButton pilihan_a;
     private javax.swing.JButton pilihan_b;
     private javax.swing.JButton pilihan_c;
