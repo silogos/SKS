@@ -339,8 +339,9 @@ public class Login extends javax.swing.JFrame {
        String passw = password.getText(); 
        if(usname.equals("admin") && passw.equals("admin")){
             JOptionPane.showMessageDialog(null, "Anda Berhasil Login Sebagai Admin");
-            this.setVisible(false); 
-            new Home().setVisible(true);
+            Home_Admin home_Admin = new Home_Admin();
+            home_Admin.show();
+            this.dispose();
        }else{ JOptionPane.showMessageDialog(null,"User Name atau Password Salah \n"); 
             JOptionPane.showMessageDialog(null, "Anda Gagal Login");
             username.setText(""); 

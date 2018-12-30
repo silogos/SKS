@@ -469,7 +469,7 @@ public class Home extends javax.swing.JFrame {
     private void jPanel_logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_logoutMouseClicked
         // TODO add your handling code here:
           int confirm = JOptionPane.showConfirmDialog(this,
-               "Apakah anda ingin Logout",
+               "Apakah anda ingin memiliki akses Admin ?",
                "Warning",
                 
                 JOptionPane.YES_NO_OPTION,
