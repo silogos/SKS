@@ -12,8 +12,8 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import Moduls.User.ControllerUser;
-import Views.Pertanyaan.Pertanyaan;
+import Moduls.User.UserController;
+import Views.Questioner.Questioner;
 /**
  *
  * @author Kohar
@@ -304,10 +304,10 @@ public class Start extends javax.swing.JFrame {
 
     private void jPanel_mulaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mulaiMouseClicked
         // TODO add your handling code here:
-        ControllerUser cu = new ControllerUser();
+        UserController cu = new UserController();
         String namas = nama.getText();
         if(cu.create(namas)) {;
-            Pertanyaan pertanyaan = new Pertanyaan();
+            Questioner pertanyaan = new Questioner();
             pertanyaan.show();
             this.dispose();
         }
