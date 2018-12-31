@@ -7,6 +7,7 @@ package Views.Home;
 
 import Views.Start.Start;
 import Views.Admin.Login;
+import Views.Tentang.Tentang;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -210,6 +211,9 @@ public class Home extends javax.swing.JFrame {
         jPanel_tentang.setBackground(new java.awt.Color(124, 111, 255));
         jPanel_tentang.setPreferredSize(new java.awt.Dimension(180, 70));
         jPanel_tentang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel_tentangMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jPanel_tentangMouseEntered(evt);
             }
@@ -465,7 +469,7 @@ public class Home extends javax.swing.JFrame {
     private void jPanel_logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_logoutMouseClicked
         // TODO add your handling code here:
           int confirm = JOptionPane.showConfirmDialog(this,
-               "Apakah anda ingin Logout",
+               "Apakah anda ingin memiliki akses Admin ?",
                "Warning",
                 
                 JOptionPane.YES_NO_OPTION,
@@ -491,6 +495,12 @@ public class Home extends javax.swing.JFrame {
         start.show();
         this.dispose();
     }//GEN-LAST:event_jPanel_mulaiMouseClicked
+
+    private void jPanel_tentangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_tentangMouseClicked
+        Tentang tentang = new Tentang();
+        tentang.show();
+        this.dispose();
+    }//GEN-LAST:event_jPanel_tentangMouseClicked
 
     /**
      * @param args the command line arguments
