@@ -5,6 +5,7 @@
  */
 package Views.Admin.Type;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import libs.DBKoneksi;
 
@@ -30,6 +31,7 @@ public class Index_Type extends javax.swing.JInternalFrame {
         txt_cari_type = new javax.swing.JTextField();
         txt_cari = new javax.swing.JButton();
         txt_tambah = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setBorder(null);
         setClosable(true);
@@ -75,6 +77,13 @@ public class Index_Type extends javax.swing.JInternalFrame {
             }
         });
 
+        jButton3.setText("Delete");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,6 +100,8 @@ public class Index_Type extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_tambah)))
                 .addContainerGap())
         );
@@ -102,7 +113,9 @@ public class Index_Type extends javax.swing.JInternalFrame {
                     .addComponent(txt_cari_type)
                     .addComponent(txt_cari, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
                 .addGap(10, 10, 10)
-                .addComponent(txt_tambah, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txt_tambah, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -142,10 +155,25 @@ public class Index_Type extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_txt_cariMouseClicked
 
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        try {
+            DefaultTableModel model = (DefaultTableModel) tabel_type.getModel();
+            int b = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin akan menghapus? ", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+             if (b == JOptionPane.YES_OPTION) {
+            db.bahasasql = "DELETE FROM personality WHERE id = '"+model.getValueAt(tabel_type.getSelectedRow(), 0)+"'";
+            db.crud();
+            JOptionPane.showMessageDialog(null, "Data Berhasil di Hapus");
+            tampilTabel();
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jButton3MouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable tabel_type;
+    public static javax.swing.JTable tabel_type;
     private javax.swing.JButton txt_cari;
     public javax.swing.JTextField txt_cari_type;
     private javax.swing.JButton txt_tambah;

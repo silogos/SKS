@@ -5,6 +5,7 @@
  */
 package Views.Admin.Type;
 
+import static Views.Admin.Type.Index_Type.tabel_type;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import libs.DBKoneksi;
@@ -153,6 +154,25 @@ public class Create_Type extends javax.swing.JFrame {
     }
     
     Index_Type index_Type = new Index_Type();
+    
+    public void tampilTabel(){
+        try {
+//            Index_Type it = new Index_Type();
+            DefaultTableModel model = (DefaultTableModel) tabel_type.getModel();
+            model.setRowCount(0);
+            db.bahasasql = "SELECT * FROM personality order by id asc";
+            db.ambilData();
+            db.hasilSet.beforeFirst();
+            while (db.hasilSet.next()) {
+                String a,b,c;
+                a = db.hasilSet.getString("id");
+                b = db.hasilSet.getString("title");
+                c = db.hasilSet.getString("description");
+                model.addRow(new Object[]{a,b,c});
+            }
+        } catch (Exception e) {
+        }
+    }
     private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
         try {
             if (txt_nama_type.getText().equals("")) {
@@ -164,7 +184,7 @@ public class Create_Type extends javax.swing.JFrame {
                     db.bahasasql = "INSERT INTO personality VALUES (null,'"+ txt_nama_type.getText()+"', '"+txt_deskripsi.getText()+"')";
                     db.crud();
                     JOptionPane.showMessageDialog(null, "Data Berhasil di Simpan");
-                    index_Type.tampilTabel();
+                    tampilTabel();
                     bersih();
                 } catch (Exception e) {
                 }

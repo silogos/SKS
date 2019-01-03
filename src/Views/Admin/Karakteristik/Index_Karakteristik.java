@@ -7,6 +7,7 @@ package Views.Admin.Karakteristik;
 
 import javax.swing.table.DefaultTableModel;
 import Moduls.Characteristic.CharacteristicController;
+import javax.swing.JOptionPane;
 import libs.DBKoneksi;
 
 /**
@@ -152,7 +153,17 @@ DBKoneksi db = new DBKoneksi();
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        // TODO add your handling code here:
+        try {
+            DefaultTableModel model = (DefaultTableModel) tbl_karakteristik.getModel();
+            int b = JOptionPane.showConfirmDialog(null, "Apakah Anda yakin akan menghapus? ", "Konfirmasi", JOptionPane.YES_NO_OPTION);
+             if (b == JOptionPane.YES_OPTION) {
+            db.bahasasql = "DELETE FROM characteristic WHERE id = '"+model.getValueAt(tbl_karakteristik.getSelectedRow(), 0)+"'";
+            db.crud();
+            JOptionPane.showMessageDialog(null, "Data Berhasil di Hapus");
+            tampilTabel();
+            }
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_jButton3MouseClicked
 
 

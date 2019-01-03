@@ -202,6 +202,7 @@ public class Create_Karakteristik extends javax.swing.JFrame {
             while (db.hasilSet.next()) {
                 cmb_nama.addItem(db.hasilSet.getString(1));
             }
+            
         } catch (Exception e) {
         }
     }
