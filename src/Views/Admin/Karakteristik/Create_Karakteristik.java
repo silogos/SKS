@@ -6,7 +6,13 @@
 package Views.Admin.Karakteristik;
 
 import Views.Admin.Karakteristik.Create_Karakteristik;
-
+import Moduls.Characteristic.CharacteristicController;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+import libs.DBConnect;
+import libs.DBKoneksi;
 /**
  *
  * @author Ari Nuryadi
@@ -34,13 +40,18 @@ public class Create_Karakteristik extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cmb_nama = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txt_deskripsi = new javax.swing.JTextArea();
         jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(124, 111, 255));
 
@@ -52,13 +63,26 @@ public class Create_Karakteristik extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Deskripsi");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmb_nama.addPopupMenuListener(new javax.swing.event.PopupMenuListener() {
+            public void popupMenuCanceled(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeInvisible(javax.swing.event.PopupMenuEvent evt) {
+            }
+            public void popupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {
+                cmb_namaPopupMenuWillBecomeVisible(evt);
+            }
+        });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txt_deskripsi.setColumns(20);
+        txt_deskripsi.setRows(5);
+        jScrollPane1.setViewportView(txt_deskripsi);
 
         jButton2.setText("Tambah");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -73,7 +97,7 @@ public class Create_Karakteristik extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
-                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(cmb_nama, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -83,7 +107,7 @@ public class Create_Karakteristik extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmb_nama, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(19, 19, 19)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -141,6 +165,53 @@ public class Create_Karakteristik extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    CharacteristicController cc = new CharacteristicController();
+    
+    public void bersih(){
+        txt_deskripsi.setText("");
+    }
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        try {
+            if (cmb_nama.getSelectedItem().equals("")) {
+                JOptionPane.showMessageDialog(null, "Silahkan Isi Data Nama Type Terlebih Dahulu");
+            } else if(txt_deskripsi.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Silahkan Isi Data Deskripsi Terlebih Dahulu");
+            } else {
+                try {
+//                    String ambil = (String) cmb_nama.getSelectedItem();
+//                    String Hasil = ambil.substring(0,1);
+//                    int cmb_nama = Integer.parseInt(Hasil);
+                    db.bahasasql = "INSERT INTO characteristic VALUES ('null', '"+cmb_nama.getSelectedItem()+"', '"+txt_deskripsi.getText()+"')";
+                    db.crud();
+                    System.out.println(db.bahasasql);
+                    JOptionPane.showMessageDialog(null, "Data Berhasil di Simpan");
+                    bersih();
+                } catch (Exception e) {
+                }
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
+    DBKoneksi db =  new DBKoneksi();
+    public void tampilCombobox(){
+        cmb_nama.removeAllItems();
+        try {
+            db.bahasasql = "select a.id, b.title from characteristic a inner join personality b on a.id = b.id";
+            db.ambilData();
+            db.hasilSet.beforeFirst();
+            while (db.hasilSet.next()) {
+                cmb_nama.addItem(db.hasilSet.getString(1));
+            }
+        } catch (Exception e) {
+        }
+    }
+    private void cmb_namaPopupMenuWillBecomeVisible(javax.swing.event.PopupMenuEvent evt) {//GEN-FIRST:event_cmb_namaPopupMenuWillBecomeVisible
+        tampilCombobox();
+    }//GEN-LAST:event_cmb_namaPopupMenuWillBecomeVisible
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -178,8 +249,8 @@ public class Create_Karakteristik extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmb_nama;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -187,6 +258,6 @@ public class Create_Karakteristik extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea txt_deskripsi;
     // End of variables declaration//GEN-END:variables
 }

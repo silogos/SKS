@@ -2,14 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
-            <file>file:/D:/Kuliah/ALGO%202/AKHIR/APP/Test_kepribadian/src/Moduls/Question/QuestionController.java</file>
-            <file>file:/D:/Kuliah/ALGO%202/AKHIR/APP/Test_kepribadian/src/Moduls/Question/QuestionModul.java</file>
-            <file>file:/D:/Kuliah/ALGO%202/AKHIR/APP/Test_kepribadian/src/Views/Questioner/Questioner.java</file>
+            <file>file:/C:/Users/Ari%20Nuryadi/Documents/NetBeansProjects/SKS/src/DAO/PersonalityDao.java</file>
+            <file>file:/C:/Users/Ari%20Nuryadi/Documents/NetBeansProjects/SKS/src/Views/Admin/Type/Index_Type.java</file>
+            <file>file:/C:/Users/Ari%20Nuryadi/Documents/NetBeansProjects/SKS/src/Views/Admin/Karakteristik/Create_Karakteristik.java</file>
+            <file>file:/C:/Users/Ari%20Nuryadi/Documents/NetBeansProjects/SKS/src/Views/Admin/Type/Create_Type.java</file>
+            <file>file:/C:/Users/Ari%20Nuryadi/Documents/NetBeansProjects/SKS/src/Moduls/Characteristic/CharacteristicController.java</file>
+            <file>file:/C:/Users/Ari%20Nuryadi/Documents/NetBeansProjects/SKS/src/Views/Admin/Karakteristik/Index_Karakteristik.java</file>
+            <file>file:/C:/Users/Ari%20Nuryadi/Documents/NetBeansProjects/SKS/src/Model/Personality.java</file>
+            <file>file:/C:/Users/Ari%20Nuryadi/Documents/NetBeansProjects/SKS/src/Controller/PersonalityCtrl.java</file>
+            <file>file:/C:/Users/Ari%20Nuryadi/Documents/NetBeansProjects/SKS/src/Moduls/User/UserController.java</file>
+            <file>file:/C:/Users/Ari%20Nuryadi/Documents/NetBeansProjects/SKS/src/DAO/Implementasi/PersonalityDaoImpl.java</file>
+            <file>file:/C:/Users/Ari%20Nuryadi/Documents/NetBeansProjects/SKS/src/Views/Questioner/Questioner.java</file>
         </group>
-=======
-        <group/>
->>>>>>> Berhasi meren
     </open-files>
 </project-private>

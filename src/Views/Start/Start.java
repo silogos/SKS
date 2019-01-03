@@ -76,12 +76,10 @@ public class Start extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        //   // TODO add your handling code here:
-        ControllerUser cu = new ControllerUser();
+        UserController cu = new UserController();
         String namas = nama.getText();
         if(cu.create(namas)) {;
-            Pertanyaan pertanyaan = new Pertanyaan();
+            Questioner pertanyaan = new Questioner();
             pertanyaan.show();
             this.dispose();
         }
@@ -109,15 +107,15 @@ public class Start extends javax.swing.JFrame {
     }
    
     
-<<<<<<< HEAD
+//<<<<<<< HEAD
     private void jPanel_closeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_closeMouseEntered
         // TODO add your handling code here:
-        resetwarnacolose(jPanel_close);
+//        resetwarnacolose(jPanel_close);
     }//GEN-LAST:event_jPanel_closeMouseEntered
 
     private void jPanel_closeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_closeMouseExited
         // TODO add your handling code here:
-        setwarnaclose(jPanel_close);
+//        setwarnaclose(jPanel_close);
     }//GEN-LAST:event_jPanel_closeMouseExited
 
     private void jPanel_closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_closeMouseClicked
@@ -142,22 +140,22 @@ public class Start extends javax.swing.JFrame {
 
     private void jPanel_mulaiMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mulaiMouseReleased
         // TODO add your handling code here:
-        SetColour(jPanel_mulai);
+//        SetColour(jPanel_mulai);
     }//GEN-LAST:event_jPanel_mulaiMouseReleased
 
     private void jPanel_mulaiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mulaiMousePressed
         // TODO add your handling code here:
-        resetColour(jPanel_mulai);
+//        resetColour(jPanel_mulai);
     }//GEN-LAST:event_jPanel_mulaiMousePressed
 
     private void jPanel_mulaiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mulaiMouseExited
         // TODO add your handling code here:
-        SetColour(jPanel_mulai);
+//        SetColour(jPanel_mulai);
     }//GEN-LAST:event_jPanel_mulaiMouseExited
 
     private void jPanel_mulaiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mulaiMouseEntered
         // TODO add your handling code here:
-        resetColour(jPanel_mulai);
+//        resetColour(jPanel_mulai);
     }//GEN-LAST:event_jPanel_mulaiMouseEntered
 
     private void jPanel_mulaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mulaiMouseClicked
@@ -171,8 +169,8 @@ public class Start extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jPanel_mulaiMouseClicked
 
-=======
->>>>>>> a969dcc66720069460476dbb7d8e96ed94858414
+//=======
+//>>>>>>> a969dcc66720069460476dbb7d8e96ed94858414
     /**
      * @param args the command line arguments
      */

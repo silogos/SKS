@@ -132,17 +132,23 @@ public class Home_Admin extends javax.swing.JFrame {
     private void btn_pertanyaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pertanyaanActionPerformed
         Index_Pertanyaan index_Pertanyaan = new Index_Pertanyaan();
         jDesktopPane1.add(index_Pertanyaan);
+        index_Pertanyaan.show();
+        if (index_Pertanyaan.isVisible()) {
+            
+        } else {
         try {
-            index_Pertanyaan.show();
-        } catch (Exception e) {
+                index_Pertanyaan.setMaximum(true);
+            } catch (Exception e) {
+            }
         }
     }//GEN-LAST:event_btn_pertanyaanActionPerformed
 
     private void btn_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_typeActionPerformed
         Index_Type index_Type = new Index_Type();
         jDesktopPane1.add(index_Type);
+        index_Type.show();
         try {
-            index_Type.show();
+            index_Type.setMaximum(true);
         } catch (Exception e) {
         }
     }//GEN-LAST:event_btn_typeActionPerformed
@@ -150,8 +156,9 @@ public class Home_Admin extends javax.swing.JFrame {
     private void btn_karakteristikMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_karakteristikMouseClicked
         Index_Karakteristik index_Karakteristik = new Index_Karakteristik();
         jDesktopPane1.add(index_Karakteristik);
+        index_Karakteristik.show();
         try {
-            index_Karakteristik.show();
+            index_Karakteristik.setMaximum(true);
            
         } catch (Exception e) {
         }

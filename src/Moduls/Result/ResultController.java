@@ -39,27 +39,27 @@ public class ResultController {
         }
     }
     
-    public ResultModul getByID(Integer id) {
-        ResultModul data = null;
-        try {
-            Connection connection = DBConnect.Conn();
-            String query = "SELECT * FROM characteristic where id=?";
-            PreparedStatement stat = connection.prepareStatement(query);
-            stat.setInt(1, id);
-            ResultSet rs = stat.executeQuery();
-            while (rs.next()) {
-                data = new ResultModul(
-                        rs.getInt("id"), 
-                        rs.getInt("type"), 
-                        rs.getString("text")
-                );
-            }
-            return data;
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-            return null;
-        }
-    }
+//    public ResultModul getByID(Integer id) {
+////        ResultModul data = null;
+////        try {
+////            Connection connection = DBConnect.Conn();
+////            String query = "SELECT * FROM characteristic where id=?";
+////            PreparedStatement stat = connection.prepareStatement(query);
+////            stat.setInt(1, id);
+////            ResultSet rs = stat.executeQuery();
+//////            while (rs.next()) {
+//////                data = new ResultModul(
+//////                        rs.getInt("id"), 
+////////                        rs.getInt("type"), 
+//////                        rs.getString("text")
+//////                );
+////            }
+////            return data;
+////        } catch (SQLException e) {
+////            System.err.println(e.getMessage());
+////            return null;
+////        }
+//    }
     
     public boolean create(ResultModul data) {
         try {
