@@ -8,6 +8,7 @@ package Views.Admin;
 import Views.Admin.Karakteristik.Index_Karakteristik;
 import Views.Admin.Pertanyaan_Admin.Index_Pertanyaan;
 import Views.Admin.Type.Index_Type;
+import Views.Home.Home;
 /**
  *
  * @author Ari Nuryadi
@@ -36,6 +37,7 @@ public class Home_Admin extends javax.swing.JFrame {
         btn_karakteristik = new javax.swing.JButton();
         btn_pertanyaan = new javax.swing.JButton();
         btn_type = new javax.swing.JButton();
+        btn_keluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,6 +90,13 @@ public class Home_Admin extends javax.swing.JFrame {
             }
         });
 
+        btn_keluar.setText("Keluar");
+        btn_keluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_keluarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -100,7 +109,9 @@ public class Home_Admin extends javax.swing.JFrame {
                 .addComponent(btn_type, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btn_pertanyaan, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(611, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 511, Short.MAX_VALUE)
+                .addComponent(btn_keluar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,7 +120,8 @@ public class Home_Admin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_karakteristik, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_pertanyaan, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_type, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_type, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_keluar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -164,6 +176,12 @@ public class Home_Admin extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_karakteristikMouseClicked
 
+    private void btn_keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_keluarActionPerformed
+        Home home = new Home();
+        home.show();
+        this.dispose();
+    }//GEN-LAST:event_btn_keluarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -201,6 +219,7 @@ public class Home_Admin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_karakteristik;
+    private javax.swing.JButton btn_keluar;
     private javax.swing.JButton btn_pertanyaan;
     private javax.swing.JButton btn_type;
     private javax.swing.JDesktopPane jDesktopPane1;

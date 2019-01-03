@@ -51,7 +51,9 @@
                   <Component id="btn_type" min="-2" pref="90" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="btn_pertanyaan" min="-2" pref="90" max="-2" attributes="0"/>
-                  <EmptySpace pref="611" max="32767" attributes="0"/>
+                  <EmptySpace pref="511" max="32767" attributes="0"/>
+                  <Component id="btn_keluar" min="-2" pref="90" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -63,6 +65,7 @@
                       <Component id="btn_karakteristik" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                       <Component id="btn_pertanyaan" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                       <Component id="btn_type" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                      <Component id="btn_keluar" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="25" max="32767" attributes="0"/>
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
@@ -135,6 +138,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_typeActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="btn_keluar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Keluar"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_keluarActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
