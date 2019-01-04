@@ -5,6 +5,9 @@
  */
 package Views.Admin.Pertanyaan_Admin;
 
+import javax.swing.table.DefaultTableModel;
+import libs.DBKoneksi;
+
 /**
  *
  * @author Ari Nuryadi
@@ -16,6 +19,7 @@ public class Index_Pertanyaan extends javax.swing.JInternalFrame {
      */
     public Index_Pertanyaan() {
         initComponents();
+        tampilTabel();
     }
 
     /**
@@ -28,15 +32,16 @@ public class Index_Pertanyaan extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbl_pertanyaan = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btn_tambah = new javax.swing.JButton();
+        btn_hapus = new javax.swing.JButton();
 
         setBorder(null);
         setClosable(true);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_pertanyaan.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -44,14 +49,26 @@ public class Index_Pertanyaan extends javax.swing.JInternalFrame {
                 "ID", "Dominan", "Influence", "Steadiness", "Compliance"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tbl_pertanyaan);
 
         jButton1.setText("Pencarian");
 
-        jButton2.setText("Tambah");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        btn_tambah.setText("Tambah");
+        btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                btn_tambahMouseClicked(evt);
+            }
+        });
+
+        btn_hapus.setText("Hapus");
+        btn_hapus.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_hapusMouseClicked(evt);
+            }
+        });
+        btn_hapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_hapusActionPerformed(evt);
             }
         });
 
@@ -71,7 +88,10 @@ public class Index_Pertanyaan extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1076, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
+                        .addComponent(btn_hapus)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_tambah)
+                        .addGap(3, 3, 3)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -82,7 +102,9 @@ public class Index_Pertanyaan extends javax.swing.JInternalFrame {
                     .addComponent(jTextField1)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
                 .addGap(10, 10, 10)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn_tambah, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                    .addComponent(btn_hapus, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 356, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -90,18 +112,47 @@ public class Index_Pertanyaan extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+DBKoneksi db = new DBKoneksi();
+public void tampilTabel(){
+        try {
+//            Index_Type it = new Index_Type();
+            DefaultTableModel model = (DefaultTableModel) tbl_pertanyaan.getModel();
+            model.setRowCount(0);
+            db.bahasasql = "SELECT * FROM `question`";
+            db.ambilData();
+            db.hasilSet.beforeFirst();
+            while (db.hasilSet.next()) {
+                String a,b,c,d,e;
+                a = db.hasilSet.getString(1);
+                b = db.hasilSet.getString(2);
+                c = db.hasilSet.getString(3);
+                d = db.hasilSet.getString(4);
+                e = db.hasilSet.getString(5);
+                model.addRow(new Object[]{a,b,c,d,e});
+            }
+        } catch (Exception e) {
+        }
+}
+    private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
         Create_Pertanyaan create_Pertanyaan =  new Create_Pertanyaan();
         create_Pertanyaan.show();
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_btn_tambahMouseClicked
+
+    private void btn_hapusMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hapusMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_hapusMouseClicked
+
+    private void btn_hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_hapusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_hapusActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_hapus;
+    private javax.swing.JButton btn_tambah;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    public static javax.swing.JTable tbl_pertanyaan;
     // End of variables declaration//GEN-END:variables
 }

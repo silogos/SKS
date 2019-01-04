@@ -5,10 +5,11 @@
  */
 package Views.Admin.Type;
 
-/**
- *
- * @author Ari Nuryadi
- */
+import static Views.Admin.Type.Index_Type.tabel_type;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import libs.DBKoneksi;
+
 public class Create_Type extends javax.swing.JFrame {
 
     /**
@@ -16,6 +17,8 @@ public class Create_Type extends javax.swing.JFrame {
      */
     public Create_Type() {
         initComponents();
+        
+        
     }
 
     /**
@@ -33,9 +36,9 @@ public class Create_Type extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jButton2 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txt_deskripsi = new javax.swing.JTextArea();
+        btn_tambah = new javax.swing.JButton();
+        txt_nama_type = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -50,11 +53,19 @@ public class Create_Type extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Deskripsi");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txt_deskripsi.setColumns(20);
+        txt_deskripsi.setRows(5);
+        jScrollPane1.setViewportView(txt_deskripsi);
 
-        jButton2.setText("Tambah");
+        btn_tambah.setText("Tambah");
+        btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_tambahMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn_tambahMouseEntered(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -68,8 +79,8 @@ public class Create_Type extends javax.swing.JFrame {
                 .addGap(72, 72, 72)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField1))
+                    .addComponent(btn_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_nama_type))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -78,13 +89,13 @@ public class Create_Type extends javax.swing.JFrame {
                 .addGap(42, 42, 42)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_nama_type, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                .addComponent(btn_tambah, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
                 .addGap(5, 5, 5))
         );
 
@@ -136,6 +147,55 @@ public class Create_Type extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    DBKoneksi db = new DBKoneksi();
+    public void bersih(){
+        txt_deskripsi.setText("");
+        txt_nama_type.setText("");
+    }
+    
+    Index_Type index_Type = new Index_Type();
+    
+    public void tampilTabel(){
+        try {
+//            Index_Type it = new Index_Type();
+            DefaultTableModel model = (DefaultTableModel) tabel_type.getModel();
+            model.setRowCount(0);
+            db.bahasasql = "SELECT * FROM personality order by id asc";
+            db.ambilData();
+            db.hasilSet.beforeFirst();
+            while (db.hasilSet.next()) {
+                String a,b,c;
+                a = db.hasilSet.getString("id");
+                b = db.hasilSet.getString("title");
+                c = db.hasilSet.getString("description");
+                model.addRow(new Object[]{a,b,c});
+            }
+        } catch (Exception e) {
+        }
+    }
+    private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
+        try {
+            if (txt_nama_type.getText().equals("")) {
+                    JOptionPane.showMessageDialog(null, "Silahkan Isi Data Nama Type Terlebih Dahulu");
+            } else if (txt_deskripsi.getText().equals("")){
+                JOptionPane.showMessageDialog(null, "Silahkan Isi Data Deskripsi Terlebih Dahulu");
+            } else {
+                try {
+                    db.bahasasql = "INSERT INTO personality VALUES (null,'"+ txt_nama_type.getText()+"', '"+txt_deskripsi.getText()+"')";
+                    db.crud();
+                    JOptionPane.showMessageDialog(null, "Data Berhasil di Simpan");
+                    tampilTabel();
+                    bersih();
+                } catch (Exception e) {
+                }
+            }
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_btn_tambahMouseClicked
+
+    private void btn_tambahMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_tambahMouseEntered
 
     /**
      * @param args the command line arguments
@@ -174,7 +234,7 @@ public class Create_Type extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btn_tambah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -182,7 +242,7 @@ public class Create_Type extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
+    public javax.swing.JTextArea txt_deskripsi;
+    public javax.swing.JTextField txt_nama_type;
     // End of variables declaration//GEN-END:variables
 }
