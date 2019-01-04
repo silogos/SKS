@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import Moduls.Question.*;
 import Moduls.Characteristic.*;
 import java.util.Arrays;
+import javax.swing.JRadioButton;
 import libs.Session;
 
 /**
@@ -55,19 +56,63 @@ public class Questioner extends javax.swing.JFrame {
         return AnswerYes == null && AnswerNo == null;
     }
     
-    public void jawab() {
-//        AnswerYes = QuestionList.get(this.idx).getAnswer().get(0);
-//        AnswerYes = QuestionList.get(this.idx).getAnswer().get(0);
-        AnswerList.add(AnswerYes);
-        AnswerList.add(AnswerNo);
-        nextQuestion();
+    public void clearAnswer() {
+        AnswerYes = null;
+        AnswerNo = null;
+    }
+    
+    public void answer(Integer type, Integer index) {
+        // type 0: AnswerYes; 1: AnswerNo;
+        if(type == 0) {
+            AnswerYes = QuestionList.get(this.idx).getAnswer().get(index);
+        } else {
+            AnswerNo = QuestionList.get(this.idx).getAnswer().get(index);
+        }
+    }
+    
+    public void setRadioBox(Integer type, Integer index) {
+        this.resetRadioBox(type);
+        // type 0: AnswerYes; 1: AnswerNo;
+        Integer i = 0;
+        for(CharacteristicModul cm : QuestionList.get(this.idx).getAnswer()) {
+            if(cm == AnswerYes){
+                
+            }
+            i++;
+        }
+         
+        if(type == 0) {
+            AnswerYes = QuestionList.get(this.idx).getAnswer();
+        } else {
+            answerNoA.setSelected(false);
+            answerNoB.setSelected(false);
+            answerNoC.setSelected(false);
+            answerNoD.setSelected(false);
+        }
+    }
+    
+    public void resetRadioBox(Integer type) {
+        if(type == 0) {
+            answerYesA.setSelected(false);
+            answerYesB.setSelected(false);
+            answerYesC.setSelected(false);
+            answerYesD.setSelected(false);
+        } else {
+            answerNoA.setSelected(false);
+            answerNoB.setSelected(false);
+            answerNoC.setSelected(false);
+            answerNoD.setSelected(false);
+        }
     }
     
     public void nextQuestion() {
         System.out.println(this.idx + " < " + this.QuestionList.size());
-        if(AnswerYes == null && AnswerNo == null) {
+        if(this.emptyAnswer()) {
             AnswerList.add(AnswerYes);
             AnswerList.add(AnswerNo);
+            this.clearAnswer();
+            this.resetRadioBox(0);
+            this.resetRadioBox(1);
         }
         if(this.idx < this.QuestionList.size() - 1){
             this.idx = this.idx + 1;

@@ -18,19 +18,16 @@ import Views.Questioner.Questioner;
  *
  * @author Kohar
  */
-public class Start extends javax.swing.JFrame {
+public class Starts extends javax.swing.JFrame {
 
     /**
      * Creates new form Start
      */
     ImageIcon imageIcon;
-      public Start() {
+      public Starts() {
         initComponents();
         imageIcon = new ImageIcon("src/AI/SKSedit.png");
         setIconImage(imageIcon.getImage());
-       
-        
-        
     }
 
     /**
@@ -78,62 +75,25 @@ public class Start extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         //   // TODO add your handling code here:
-        ControllerUser cu = new ControllerUser();
+        UserController cu = new UserController();
         String namas = nama.getText();
-        if(cu.create(namas)) {;
-            Pertanyaan pertanyaan = new Pertanyaan();
-            pertanyaan.show();
+        if(cu.create(namas)) {
+            Questioner questioner = new Questioner();
+            questioner.show();
             this.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-    public void SetColour (JPanel panel){
-        panel.setBackground(new java.awt.Color(153,153,255));
-    }
-    public void resetColour(JPanel panel){
-        panel.setBackground(new java.awt.Color(255,255,255));
-    }
-    
-    public void setwarna (JPanel panel){
-        panel.setBackground(new java.awt.Color(255,255,255));
-    }
-    public void resetwarna(JPanel panel){
-        panel.setBackground(new java.awt.Color(153,153,255));
-    }
-    
-     public void setwarnaclose (JPanel panel){
-         panel.setBackground(new java.awt.Color(153,153,255));
-       
-    }
-    public void resetwarnacolose(JPanel panel){
-         panel.setBackground(new java.awt.Color(255,255,255));
-    }
    
-    
-<<<<<<< HEAD
     private void jPanel_closeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_closeMouseEntered
         // TODO add your handling code here:
-        resetwarnacolose(jPanel_close);
     }//GEN-LAST:event_jPanel_closeMouseEntered
 
     private void jPanel_closeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_closeMouseExited
         // TODO add your handling code here:
-        setwarnaclose(jPanel_close);
     }//GEN-LAST:event_jPanel_closeMouseExited
 
     private void jPanel_closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_closeMouseClicked
         // TODO add your handling code here:
-         int confirm = JOptionPane.showConfirmDialog(this,
-                "Konfirmasi Keluar Aplikasi",
-                "Yakin untuk keluar dari program",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.QUESTION_MESSAGE);
-                
-          
-        if (confirm == JOptionPane.YES_OPTION) 
-           System.exit(0);
-           ;            
-               
-       
     }//GEN-LAST:event_jPanel_closeMouseClicked
 
     private void namaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaActionPerformed
@@ -142,22 +102,18 @@ public class Start extends javax.swing.JFrame {
 
     private void jPanel_mulaiMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mulaiMouseReleased
         // TODO add your handling code here:
-        SetColour(jPanel_mulai);
     }//GEN-LAST:event_jPanel_mulaiMouseReleased
 
     private void jPanel_mulaiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mulaiMousePressed
         // TODO add your handling code here:
-        resetColour(jPanel_mulai);
     }//GEN-LAST:event_jPanel_mulaiMousePressed
 
     private void jPanel_mulaiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mulaiMouseExited
         // TODO add your handling code here:
-        SetColour(jPanel_mulai);
     }//GEN-LAST:event_jPanel_mulaiMouseExited
 
     private void jPanel_mulaiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mulaiMouseEntered
         // TODO add your handling code here:
-        resetColour(jPanel_mulai);
     }//GEN-LAST:event_jPanel_mulaiMouseEntered
 
     private void jPanel_mulaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mulaiMouseClicked
@@ -171,8 +127,6 @@ public class Start extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jPanel_mulaiMouseClicked
 
-=======
->>>>>>> a969dcc66720069460476dbb7d8e96ed94858414
     /**
      * @param args the command line arguments
      */
@@ -190,21 +144,23 @@ public class Start extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Start.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Starts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Start.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Starts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Start.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Starts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Start.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Starts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Start().setVisible(true);
+                new Starts().setVisible(true);
             }
         });
     }

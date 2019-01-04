@@ -5,7 +5,7 @@
  */
 package Views.Home;
 
-import Views.Start.Start;
+import Views.Start.Starts;
 import Views.Admin.Login;
 import Views.Tentang.Tentang;
 import java.awt.Color;
@@ -491,7 +491,7 @@ public class Home extends javax.swing.JFrame {
 
     private void jPanel_mulaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mulaiMouseClicked
         // TODO add your handling code here:
-        Start start = new Start();
+        Starts start = new Starts();
         start.show();
         this.dispose();
     }//GEN-LAST:event_jPanel_mulaiMouseClicked

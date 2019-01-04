@@ -40,6 +40,28 @@ public class CharacteristicController {
         }
     }
     
+    public ArrayList<CharacteristicModul> getListByType(Integer type) {
+        ArrayList<CharacteristicModul> data = new ArrayList<>();
+        try {
+            Connection connection = DBConnect.Conn();
+            String query = "SELECT * FROM characteristic WHERE type=?";
+            PreparedStatement stat = connection.prepareStatement(query);
+            stat.setInt(1, type);
+            ResultSet rs = stat.executeQuery();
+            while (rs.next()) {
+                CharacteristicModul cm = null;
+                cm.setId(rs.getInt("id"));
+                cm.setType(rs.getInt("type"));
+                cm.setText(rs.getString("text"));
+                data.add(cm);
+            }
+            return data;
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            return null;
+        }
+    }
+    
     public CharacteristicModul getByID(Integer id) {
         CharacteristicModul data = null;
         try {
