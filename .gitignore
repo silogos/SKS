@@ -1,8 +1,3 @@
-<<<<<<< HEAD:SKS-master(sudah edit desain)/.gitignore
 /nbproject/private/
 /build/
-=======
-/nbproject/private/
-/build/
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:.gitignore
 /dist/

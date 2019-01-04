@@ -6,13 +6,9 @@
 package Views.Admin.Type;
 
 import static Views.Admin.Type.Index_Type.tabel_type;
-<<<<<<< HEAD:SKS-master(sudah edit desain)/src/Views/Admin/Type/Create_Type.java
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-=======
-import javax.swing.JOptionPane;
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Admin/Type/Create_Type.java
 import javax.swing.table.DefaultTableModel;
 import libs.DBKoneksi;
 
@@ -24,13 +20,9 @@ public class Create_Type extends javax.swing.JFrame {
     ImageIcon imageIcon;
     public Create_Type() {
         initComponents();
-<<<<<<< HEAD:SKS-master(sudah edit desain)/src/Views/Admin/Type/Create_Type.java
         imageIcon = new ImageIcon("src/Assets/SKSedit.png");
         setIconImage(imageIcon.getImage());
        
-=======
-        
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Admin/Type/Create_Type.java
         
     }
 
@@ -50,14 +42,9 @@ public class Create_Type extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_deskripsi = new javax.swing.JTextArea();
-<<<<<<< HEAD:SKS-master(sudah edit desain)/src/Views/Admin/Type/Create_Type.java
         txt_nama_type = new javax.swing.JTextField();
         jPanel_tambah = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-=======
-        btn_tambah = new javax.swing.JButton();
-        txt_nama_type = new javax.swing.JTextField();
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Admin/Type/Create_Type.java
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -76,7 +63,6 @@ public class Create_Type extends javax.swing.JFrame {
         txt_deskripsi.setRows(5);
         jScrollPane1.setViewportView(txt_deskripsi);
 
-<<<<<<< HEAD:SKS-master(sudah edit desain)/src/Views/Admin/Type/Create_Type.java
         jPanel_tambah.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -109,17 +95,6 @@ public class Create_Type extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-=======
-        btn_tambah.setText("Tambah");
-        btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_tambahMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_tambahMouseEntered(evt);
-            }
-        });
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Admin/Type/Create_Type.java
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -130,7 +105,6 @@ public class Create_Type extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
-<<<<<<< HEAD:SKS-master(sudah edit desain)/src/Views/Admin/Type/Create_Type.java
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -138,14 +112,6 @@ public class Create_Type extends javax.swing.JFrame {
                         .addComponent(txt_nama_type, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(53, 53, 53))
-=======
-                .addGap(72, 72, 72)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
-                    .addComponent(btn_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_nama_type))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Admin/Type/Create_Type.java
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -158,15 +124,9 @@ public class Create_Type extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-<<<<<<< HEAD:SKS-master(sudah edit desain)/src/Views/Admin/Type/Create_Type.java
                 .addGap(28, 28, 28)
                 .addComponent(jPanel_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(37, Short.MAX_VALUE))
-=======
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_tambah, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                .addGap(5, 5, 5))
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Admin/Type/Create_Type.java
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -244,7 +204,6 @@ public class Create_Type extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
-<<<<<<< HEAD:SKS-master(sudah edit desain)/src/Views/Admin/Type/Create_Type.java
     public void SetColour (JPanel panel){
         panel.setBackground(new java.awt.Color(153,153,255));
     }
@@ -280,9 +239,6 @@ public class Create_Type extends javax.swing.JFrame {
 
     private void jPanel_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_tambahMouseClicked
         // TODO add your handling code here:
-=======
-    private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Admin/Type/Create_Type.java
         try {
             if (txt_nama_type.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Silahkan Isi Data Nama Type Terlebih Dahulu");
@@ -300,15 +256,7 @@ public class Create_Type extends javax.swing.JFrame {
             }
         } catch (Exception e) {
         }
-<<<<<<< HEAD:SKS-master(sudah edit desain)/src/Views/Admin/Type/Create_Type.java
     }//GEN-LAST:event_jPanel_tambahMouseClicked
-=======
-    }//GEN-LAST:event_btn_tambahMouseClicked
-
-    private void btn_tambahMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_tambahMouseEntered
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Admin/Type/Create_Type.java
 
     /**
      * @param args the command line arguments
@@ -347,10 +295,6 @@ public class Create_Type extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-<<<<<<< HEAD:SKS-master(sudah edit desain)/src/Views/Admin/Type/Create_Type.java
-=======
-    private javax.swing.JButton btn_tambah;
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Admin/Type/Create_Type.java
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

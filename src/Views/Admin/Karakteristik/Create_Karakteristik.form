@@ -109,13 +109,8 @@
                           <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jScrollPane1" pref="304" max="32767" attributes="0"/>
-<<<<<<< HEAD:SKS-master(sudah edit desain)/src/Views/Admin/Karakteristik/Create_Karakteristik.form
                               <Component id="cmb_nama" max="32767" attributes="0"/>
                               <Component id="jPanel_Tambah" alignment="0" min="-2" max="-2" attributes="0"/>
-=======
-                              <Component id="btn_tambah" min="-2" pref="114" max="-2" attributes="0"/>
-                              <Component id="txt_nama_type" alignment="0" max="32767" attributes="0"/>
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Admin/Type/Create_Type.form
                           </Group>
                           <EmptySpace pref="54" max="32767" attributes="0"/>
                       </Group>
@@ -127,11 +122,7 @@
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-<<<<<<< HEAD:SKS-master(sudah edit desain)/src/Views/Admin/Karakteristik/Create_Karakteristik.form
                               <Component id="cmb_nama" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-=======
-                              <Component id="txt_nama_type" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Admin/Type/Create_Type.form
                           </Group>
                           <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -139,13 +130,8 @@
                               <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-<<<<<<< HEAD:SKS-master(sudah edit desain)/src/Views/Admin/Karakteristik/Create_Karakteristik.form
                           <Component id="jPanel_Tambah" min="-2" max="-2" attributes="0"/>
                           <EmptySpace pref="21" max="32767" attributes="0"/>
-=======
-                          <Component id="btn_tambah" pref="37" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Admin/Type/Create_Type.form
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -192,17 +178,10 @@
                         <Property name="columns" type="int" value="20"/>
                         <Property name="rows" type="int" value="5"/>
                       </Properties>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
-<<<<<<< HEAD:SKS-master(sudah edit desain)/src/Views/Admin/Karakteristik/Create_Karakteristik.form
                 <Container class="javax.swing.JPanel" name="jPanel_Tambah">
-=======
-                <Component class="javax.swing.JButton" name="btn_tambah">
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Admin/Type/Create_Type.form
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -211,7 +190,6 @@
                     </Property>
                   </Properties>
                   <Events>
-<<<<<<< HEAD:SKS-master(sudah edit desain)/src/Views/Admin/Karakteristik/Create_Karakteristik.form
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel_TambahMouseClicked"/>
                     <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel_TambahMouseEntered"/>
                     <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel_TambahMouseExited"/>
@@ -248,17 +226,6 @@
                     </Component>
                   </SubComponents>
                 </Container>
-=======
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_tambahMouseClicked"/>
-                    <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btn_tambahMouseEntered"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JTextField" name="txt_nama_type">
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Admin/Type/Create_Type.form
               </SubComponents>
             </Container>
             <Component class="javax.swing.JLabel" name="jLabel1">
