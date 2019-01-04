@@ -8,6 +8,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -97,9 +100,15 @@
                           </Group>
                           <EmptySpace pref="55" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+<<<<<<< HEAD:SKS-master(sudah edit desain)/src/Views/Admin/Type/Create_Type.form
                               <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="jScrollPane1" max="32767" attributes="0"/>
                                   <Component id="txt_nama_type" alignment="0" min="-2" pref="304" max="-2" attributes="0"/>
+=======
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jScrollPane1" pref="304" max="32767" attributes="0"/>
+                                  <Component id="cmb_nama" max="32767" attributes="0"/>
+>>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Admin/Karakteristik/Create_Karakteristik.form
                               </Group>
                               <Component id="jPanel_tambah" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -113,7 +122,11 @@
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
+<<<<<<< HEAD:SKS-master(sudah edit desain)/src/Views/Admin/Type/Create_Type.form
                               <Component id="txt_nama_type" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+=======
+                              <Component id="cmb_nama" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+>>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Admin/Karakteristik/Create_Karakteristik.form
                           </Group>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -144,6 +157,22 @@
                     <Property name="text" type="java.lang.String" value="Deskripsi"/>
                   </Properties>
                 </Component>
+<<<<<<< HEAD:SKS-master(sudah edit desain)/src/Views/Admin/Type/Create_Type.form
+=======
+                <Component class="javax.swing.JComboBox" name="cmb_nama">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="popupMenuWillBecomeVisible" listener="javax.swing.event.PopupMenuListener" parameters="javax.swing.event.PopupMenuEvent" handler="cmb_namaPopupMenuWillBecomeVisible"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
+>>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Admin/Karakteristik/Create_Karakteristik.form
                 <Container class="javax.swing.JScrollPane" name="jScrollPane1">
                   <AuxValues>
                     <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -176,6 +205,7 @@
                     </Property>
                   </Properties>
                   <Events>
+<<<<<<< HEAD:SKS-master(sudah edit desain)/src/Views/Admin/Type/Create_Type.form
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel_tambahMouseClicked"/>
                     <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel_tambahMouseEntered"/>
                     <EventHandler event="mouseExited" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jPanel_tambahMouseExited"/>
@@ -212,6 +242,11 @@
                     </Component>
                   </SubComponents>
                 </Container>
+=======
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton2MouseClicked"/>
+                  </Events>
+                </Component>
+>>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Admin/Karakteristik/Create_Karakteristik.form
               </SubComponents>
             </Container>
             <Component class="javax.swing.JLabel" name="jLabel1">

@@ -12,16 +12,14 @@ import libs.DBKoneksi;
  *
  * @author Ari Nuryadi
  */
-public class Table_Dominan extends javax.swing.JFrame {
+public class Table_Influence extends javax.swing.JFrame {
 
     /**
      * Creates new form Table_Dominan
      */
-    public Table_Dominan() {
+    public Table_Influence() {
         initComponents();
         tampilTabel();
-        //buat layar ditengah
-        setLocationRelativeTo(this);
     }
 
     /**
@@ -35,11 +33,11 @@ public class Table_Dominan extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_dominan = new javax.swing.JTable();
+        tbl_influence = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        tbl_dominan.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_influence.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -55,12 +53,12 @@ public class Table_Dominan extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tbl_dominan.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbl_influence.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbl_dominanMouseClicked(evt);
+                tbl_influenceMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tbl_dominan);
+        jScrollPane1.setViewportView(tbl_influence);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -68,13 +66,13 @@ public class Table_Dominan extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -96,9 +94,9 @@ DBKoneksi db = new DBKoneksi();
 public void tampilTabel(){
         try {
 //            Index_Type it = new Index_Type();
-            DefaultTableModel model = (DefaultTableModel) tbl_dominan.getModel();
+            DefaultTableModel model = (DefaultTableModel) tbl_influence.getModel();
             model.setRowCount(0);
-            db.bahasasql = "SELECT * FROM characteristic where type = '1'";
+            db.bahasasql = "SELECT * FROM characteristic where type = '2'";
             db.ambilData();
             db.hasilSet.beforeFirst();
             while (db.hasilSet.next()) {
@@ -111,19 +109,19 @@ public void tampilTabel(){
         } catch (Exception e) {
         }
 }
-    private void tbl_dominanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_dominanMouseClicked
+    private void tbl_influenceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_influenceMouseClicked
         try {
-            DefaultTableModel model = (DefaultTableModel) tbl_dominan.getModel();
-            db.bahasasql = "SELECT * FROM characteristic where id = '"+ model.getValueAt(tbl_dominan.getSelectedRow(), 0)+"'";
+            DefaultTableModel model = (DefaultTableModel) tbl_influence.getModel();
+            db.bahasasql = "SELECT * FROM characteristic where id = '"+ model.getValueAt(tbl_influence.getSelectedRow(), 0)+"'";
             db.ambilData();
             db.hasilSet.beforeFirst();
             while (db.hasilSet.next()) {                
-                Create_Pertanyaan.txt_dominan.setText(db.hasilSet.getString("id"));
+                Create_Pertanyaan.txt_influence.setText(db.hasilSet.getString("id"));
             }
             this.dispose();
         } catch (Exception e) {
         }
-    }//GEN-LAST:event_tbl_dominanMouseClicked
+    }//GEN-LAST:event_tbl_influenceMouseClicked
 
     /**
      * @param args the command line arguments
@@ -142,20 +140,21 @@ public void tampilTabel(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Table_Dominan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Table_Influence.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Table_Dominan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Table_Influence.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Table_Dominan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Table_Influence.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Table_Dominan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Table_Influence.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Table_Dominan().setVisible(true);
+                new Table_Influence().setVisible(true);
             }
         });
     }
@@ -163,6 +162,6 @@ public void tampilTabel(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tbl_dominan;
+    private javax.swing.JTable tbl_influence;
     // End of variables declaration//GEN-END:variables
 }

@@ -12,18 +12,14 @@ import libs.DBKoneksi;
  *
  * @author Ari Nuryadi
  */
-public class Table_Compliance extends javax.swing.JFrame {
+public class Table_Steadiness extends javax.swing.JFrame {
 
     /**
      * Creates new form Table_Dominan
      */
-    public Table_Compliance() {
+    public Table_Steadiness() {
         initComponents();
         tampilTabel();
-         initComponents();
- 
-          // Baris kode ini yang membuat JFrame tampil di tengah layar
-          setLocationRelativeTo(this);
     }
 
     /**
@@ -37,11 +33,11 @@ public class Table_Compliance extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_compliance = new javax.swing.JTable();
+        tbl_steadiness = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        tbl_compliance.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_steadiness.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -57,12 +53,12 @@ public class Table_Compliance extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tbl_compliance.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbl_steadiness.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbl_complianceMouseClicked(evt);
+                tbl_steadinessMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tbl_compliance);
+        jScrollPane1.setViewportView(tbl_steadiness);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -70,13 +66,13 @@ public class Table_Compliance extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -94,27 +90,13 @@ public class Table_Compliance extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void tbl_complianceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_complianceMouseClicked
-        try {
-            DefaultTableModel model = (DefaultTableModel) tbl_compliance.getModel();
-            db.bahasasql = "SELECT * FROM characteristic where id = '"+ model.getValueAt(tbl_compliance.getSelectedRow(), 0)+"'";
-            db.ambilData();
-            db.hasilSet.beforeFirst();
-            while (db.hasilSet.next()) {
-                Create_Pertanyaan.txt_compliance.setText(db.hasilSet.getString("id"));
-            }
-            this.dispose();
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_tbl_complianceMouseClicked
 DBKoneksi db = new DBKoneksi();
 public void tampilTabel(){
         try {
 //            Index_Type it = new Index_Type();
-            DefaultTableModel model = (DefaultTableModel) tbl_compliance.getModel();
+            DefaultTableModel model = (DefaultTableModel) tbl_steadiness.getModel();
             model.setRowCount(0);
-            db.bahasasql = "SELECT * FROM characteristic where type = '4'";
+            db.bahasasql = "SELECT * FROM characteristic where type = '3'";
             db.ambilData();
             db.hasilSet.beforeFirst();
             while (db.hasilSet.next()) {
@@ -127,6 +109,20 @@ public void tampilTabel(){
         } catch (Exception e) {
         }
 }
+    private void tbl_steadinessMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_steadinessMouseClicked
+        try {
+            DefaultTableModel model = (DefaultTableModel) tbl_steadiness.getModel();
+            db.bahasasql = "SELECT * FROM characteristic where id = '"+ model.getValueAt(tbl_steadiness.getSelectedRow(), 0)+"'";
+            db.ambilData();
+            db.hasilSet.beforeFirst();
+            while (db.hasilSet.next()) {                
+                Create_Pertanyaan.txt_steadiness.setText(db.hasilSet.getString("id"));
+            }
+            this.dispose();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_tbl_steadinessMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -144,18 +140,14 @@ public void tampilTabel(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Table_Compliance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Table_Steadiness.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Table_Compliance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Table_Steadiness.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Table_Compliance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Table_Steadiness.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Table_Compliance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Table_Steadiness.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -164,7 +156,7 @@ public void tampilTabel(){
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Table_Compliance().setVisible(true);
+                new Table_Steadiness().setVisible(true);
             }
         });
     }
@@ -172,6 +164,6 @@ public void tampilTabel(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tbl_compliance;
+    private javax.swing.JTable tbl_steadiness;
     // End of variables declaration//GEN-END:variables
 }

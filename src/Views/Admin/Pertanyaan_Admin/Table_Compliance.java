@@ -12,15 +12,14 @@ import libs.DBKoneksi;
  *
  * @author Ari Nuryadi
  */
-public class Table_Steadiness extends javax.swing.JFrame {
+public class Table_Compliance extends javax.swing.JFrame {
 
     /**
      * Creates new form Table_Dominan
      */
-    public Table_Steadiness() {
+    public Table_Compliance() {
         initComponents();
         tampilTabel();
-        setLocationRelativeTo(this);
     }
 
     /**
@@ -34,11 +33,11 @@ public class Table_Steadiness extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbl_steadiness = new javax.swing.JTable();
+        tbl_compliance = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        tbl_steadiness.setModel(new javax.swing.table.DefaultTableModel(
+        tbl_compliance.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -54,12 +53,12 @@ public class Table_Steadiness extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tbl_steadiness.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbl_compliance.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbl_steadinessMouseClicked(evt);
+                tbl_complianceMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tbl_steadiness);
+        jScrollPane1.setViewportView(tbl_compliance);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -67,15 +66,15 @@ public class Table_Steadiness extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -86,9 +85,7 @@ public class Table_Steadiness extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 8, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -97,9 +94,9 @@ DBKoneksi db = new DBKoneksi();
 public void tampilTabel(){
         try {
 //            Index_Type it = new Index_Type();
-            DefaultTableModel model = (DefaultTableModel) tbl_steadiness.getModel();
+            DefaultTableModel model = (DefaultTableModel) tbl_compliance.getModel();
             model.setRowCount(0);
-            db.bahasasql = "SELECT * FROM characteristic where type = '3'";
+            db.bahasasql = "SELECT * FROM characteristic where type = '4'";
             db.ambilData();
             db.hasilSet.beforeFirst();
             while (db.hasilSet.next()) {
@@ -112,19 +109,19 @@ public void tampilTabel(){
         } catch (Exception e) {
         }
 }
-    private void tbl_steadinessMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_steadinessMouseClicked
+    private void tbl_complianceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_complianceMouseClicked
         try {
-            DefaultTableModel model = (DefaultTableModel) tbl_steadiness.getModel();
-            db.bahasasql = "SELECT * FROM characteristic where id = '"+ model.getValueAt(tbl_steadiness.getSelectedRow(), 0)+"'";
+            DefaultTableModel model = (DefaultTableModel) tbl_compliance.getModel();
+            db.bahasasql = "SELECT * FROM characteristic where id = '"+ model.getValueAt(tbl_compliance.getSelectedRow(), 0)+"'";
             db.ambilData();
             db.hasilSet.beforeFirst();
             while (db.hasilSet.next()) {                
-                Create_Pertanyaan.txt_steadiness.setText(db.hasilSet.getString("id"));
+                Create_Pertanyaan.txt_compliance.setText(db.hasilSet.getString("id"));
             }
             this.dispose();
         } catch (Exception e) {
         }
-    }//GEN-LAST:event_tbl_steadinessMouseClicked
+    }//GEN-LAST:event_tbl_complianceMouseClicked
 
     /**
      * @param args the command line arguments
@@ -143,14 +140,18 @@ public void tampilTabel(){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Table_Steadiness.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Table_Compliance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Table_Steadiness.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Table_Compliance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Table_Steadiness.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Table_Compliance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Table_Steadiness.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Table_Compliance.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -159,7 +160,7 @@ public void tampilTabel(){
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Table_Steadiness().setVisible(true);
+                new Table_Compliance().setVisible(true);
             }
         });
     }
@@ -167,6 +168,6 @@ public void tampilTabel(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tbl_steadiness;
+    private javax.swing.JTable tbl_compliance;
     // End of variables declaration//GEN-END:variables
 }
