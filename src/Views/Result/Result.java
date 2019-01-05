@@ -10,13 +10,23 @@ import java.awt.BasicStroke;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.DefaultCaret;
+import libs.DBConnect;
+import libs.Session;
 
 
 import org.jfree.chart.ChartPanel; 
@@ -42,19 +52,22 @@ import org.jfree.data.general.DatasetGroup;
  */
 public class Result extends javax.swing.JFrame {
     public ArrayList<DiscModul> dataDiscArray;
-    public DefaultTableModel dataDisc;
+    public DefaultTableModel dataDisc, dataJob;
     /**
      * Creates new form Result
      */
     public Result() {
         initComponents();
+//        Session.setID(23);
+//        Session.setNama("babang");
         this.getDataDisc();
-        ResultTabFrame rtb = new ResultTabFrame();
-        ResultTabFrame rtd = new ResultTabFrame();
-        ResultTabFrame rte = new ResultTabFrame();
-        ResultPanelContent.add(rtb.getContentPane());
-        ResultPanelContent.add(rtd.getContentPane());
-        ResultPanelContent.add(rte.getContentPane());
+        this.getJobList();
+        this.getDescriptionPersonali();
+        
+        ID.setText(Session.getID().toString());
+        Nama.setText(Session.getNama());
+        LocalDateTime currentTime = LocalDateTime.now();
+        Tanggal.setText(currentTime.getDayOfMonth() +" "+ currentTime.getMonth()+" "+ currentTime.getYear());
     }
     
     public void getDataDisc() {
@@ -67,7 +80,6 @@ public class Result extends javax.swing.JFrame {
         this.setWidthColumn(discTable, 3, 25);
         this.setWidthColumn(discTable, 4, 25);
         this.setWidthColumn(discTable, 5, 75);
-        discTable.getColumnModel().getColumn(5).setWidth(10);
         Object[] row = new Object[6];
         for(DiscModul item: dataDiscArray){
             row[0] = item.getDescription();
@@ -84,6 +96,38 @@ public class Result extends javax.swing.JFrame {
         table.getColumnModel().getColumn(column).setMinWidth(width);
         table.getColumnModel().getColumn(column).setMaxWidth(width);
         table.getColumnModel().getColumn(column).setWidth(width);
+    }
+    
+    public void getJobList() {
+        try {
+            dataJob = (DefaultTableModel)jobTable.getModel();
+            dataJob.getDataVector().removeAllElements();
+            dataJob.fireTableDataChanged();
+            this.setWidthColumn(jobTable, 0, 35);
+            Connection connection = DBConnect.Conn();
+            String sql = "SELECT " +
+                        "    j.title, " +
+                        "    (COUNT(r.job_id) / (SELECT COUNT(1) from rules where job_id=r.job_id) * 100) AS JUMLAH " +
+                        "from result res " +
+                        "JOIN rules r ON res.characteristic_id = r.characteristic_id " +
+                        "JOIN job j ON r.job_id = j.id " +
+                        "WHERE res.user_id = " + Session.getID() + " " +
+                        "GROUP BY r.job_id";
+            
+            Statement stat = (Statement) connection.createStatement();
+            ResultSet rs = stat.executeQuery(sql);
+            Object[] row = new Object[6];
+            Integer no = 1;
+            while (rs.next()) {
+                row[0] = no;
+                row[1] = rs.getString("title");
+                row[2] = Double.parseDouble(rs.getString("JUMLAH")) + "%";
+                dataJob.addRow(row);
+                no++;
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
     }
     
     public void getChart(){
@@ -114,8 +158,55 @@ public class Result extends javax.swing.JFrame {
 
         ChartFrame frame = new ChartFrame("DISC", chart);
         frame.setVisible(true);
-        frame.setSize(new Dimension(300, 500));
+        frame.setSize(new Dimension(500, 300));
+        frame.setLocationRelativeTo(null);
     }
+    
+    public void getDescriptionPersonali() {
+        Integer idx = 0;
+        for(DiscModul item: dataDiscArray) {
+            Integer hasil = item.getDominance();
+            Integer type = 1;
+            if(hasil < item.getInfluence()) {
+                hasil = item.getInfluence();
+                type = 2;
+            }
+            if(hasil < item.getSteadiness()) {
+                hasil = item.getSteadiness();
+                type = 3;
+            }
+            if(hasil < item.getCompliance()) {
+                hasil = item.getCompliance();
+                type = 4;
+            }
+            if(idx == 0) {
+                this.setDescriptionPersonali(kdu, type);
+            } else if(idx == 1) {
+                this.setDescriptionPersonali(kyt, type);
+            } else if(idx == 2) {
+                this.setDescriptionPersonali(kst, type);
+            }
+            idx++;
+        }
+    }
+    
+    public void setDescriptionPersonali(JLabel jta, Integer type) {
+        try {
+            Connection connection = DBConnect.Conn();
+            String sql = "SELECT * FROM `personality` WHERE id = "+type;
+            System.out.println(sql);
+            Statement stat = (Statement) connection.createStatement();
+            ResultSet rs = stat.executeQuery(sql);
+            
+            while (rs.next()) {
+               jta.setText("<html>"+rs.getString("description")+"</html>");
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+    
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -140,13 +231,22 @@ public class Result extends javax.swing.JFrame {
         discTable = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         ResultTab = new javax.swing.JTabbedPane();
-        ResultPanel = new javax.swing.JScrollPane();
-        ResultPanelContent = new javax.swing.JPanel();
         SummaryPanel = new javax.swing.JScrollPane();
         SummaryPanelContent = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         PersonalityPanel = new javax.swing.JScrollPane();
-        JobMatchedPanel = new javax.swing.JScrollPane();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        kdu = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        kyt = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        kst = new javax.swing.JLabel();
+        JobMatchedPanel = new javax.swing.JScrollPane();
+        jobTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(672, 461));
@@ -169,10 +269,16 @@ public class Result extends javax.swing.JFrame {
         jLabel3.setText("Tanggal    :");
 
         ID.setText("jTextField1");
+        ID.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        ID.setEnabled(false);
 
         Nama.setText("jTextField1");
+        Nama.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        Nama.setEnabled(false);
 
         Tanggal.setText("jTextField1");
+        Tanggal.setDisabledTextColor(new java.awt.Color(0, 0, 0));
+        Tanggal.setEnabled(false);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -198,7 +304,7 @@ public class Result extends javax.swing.JFrame {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(20, 20, 20)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(ID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -210,7 +316,7 @@ public class Result extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(Tanggal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         jPanel3.add(jPanel5);
@@ -270,7 +376,7 @@ public class Result extends javax.swing.JFrame {
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -281,22 +387,145 @@ public class Result extends javax.swing.JFrame {
 
         jPanel4.setMinimumSize(new java.awt.Dimension(666, 273));
 
-        ResultPanelContent.setMaximumSize(new java.awt.Dimension(639, 222));
-        ResultPanelContent.setLayout(new javax.swing.BoxLayout(ResultPanelContent, javax.swing.BoxLayout.Y_AXIS));
-        ResultPanel.setViewportView(ResultPanelContent);
-
-        ResultTab.addTab("Result", ResultPanel);
-
         SummaryPanelContent.setMaximumSize(new java.awt.Dimension(639, 222));
-        SummaryPanelContent.setLayout(new java.awt.GridLayout(1, 3, 10, 0));
+
+        jButton1.setText("SHOW CHART");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout SummaryPanelContentLayout = new javax.swing.GroupLayout(SummaryPanelContent);
+        SummaryPanelContent.setLayout(SummaryPanelContentLayout);
+        SummaryPanelContentLayout.setHorizontalGroup(
+            SummaryPanelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SummaryPanelContentLayout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(142, Short.MAX_VALUE))
+        );
+        SummaryPanelContentLayout.setVerticalGroup(
+            SummaryPanelContentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(SummaryPanelContentLayout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(57, Short.MAX_VALUE))
+        );
+
         SummaryPanel.setViewportView(SummaryPanelContent);
 
         ResultTab.addTab("Summary", SummaryPanel);
-        ResultTab.addTab("Personality Description", PersonalityPanel);
-        ResultTab.addTab("Job Matched", JobMatchedPanel);
 
-        jPanel10.setLayout(new java.awt.BorderLayout());
-        ResultTab.addTab("tab5", jPanel10);
+        jPanel2.setLayout(new javax.swing.BoxLayout(jPanel2, javax.swing.BoxLayout.Y_AXIS));
+
+        jLabel4.setText("Kepribadian dimuka Umum");
+
+        kdu.setText("jLabel7");
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(kdu, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(58, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(kdu, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel2.add(jPanel8);
+
+        jLabel5.setText("Kepribadian yang Tersembunyi");
+
+        kyt.setText("jLabel7");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(kyt, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(58, Short.MAX_VALUE))
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(kyt, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel2.add(jPanel9);
+
+        jLabel6.setText("Kepribadian Saat Mendapat Tekanan");
+
+        kst.setText("jLabel7");
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(kst, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(58, Short.MAX_VALUE))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(kst, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jPanel2.add(jPanel10);
+
+        PersonalityPanel.setViewportView(jPanel2);
+
+        ResultTab.addTab("Personality Description", PersonalityPanel);
+
+        jobTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "No", "Job Name", " Percentage"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        JobMatchedPanel.setViewportView(jobTable);
+
+        ResultTab.addTab("Job Matched", JobMatchedPanel);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -322,6 +551,11 @@ public class Result extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        this.getChart();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -363,22 +597,32 @@ public class Result extends javax.swing.JFrame {
     private javax.swing.JScrollPane JobMatchedPanel;
     private javax.swing.JTextField Nama;
     private javax.swing.JScrollPane PersonalityPanel;
-    private javax.swing.JScrollPane ResultPanel;
-    private javax.swing.JPanel ResultPanelContent;
     private javax.swing.JTabbedPane ResultTab;
     private javax.swing.JScrollPane SummaryPanel;
     private javax.swing.JPanel SummaryPanelContent;
     private javax.swing.JTextField Tanggal;
     private javax.swing.JTable discTable;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jobTable;
+    private javax.swing.JLabel kdu;
+    private javax.swing.JLabel kst;
+    private javax.swing.JLabel kyt;
     // End of variables declaration//GEN-END:variables
+
 }

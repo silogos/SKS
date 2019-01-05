@@ -11,6 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import libs.DBConnect;
+import libs.Session;
 /**
  *
  * @author ThinkPad
@@ -31,9 +32,10 @@ public class ResultController {
                         "FROM `result` r " +
                         "JOIN `characteristic` c " +
                         "   ON r.characteristic_id = c.id " +
+                        "WHERE r.user_id ="+ Session.getID() + " " +
                         "GROUP BY r.type " +
                         "ORDER BY r.type DESC";
-            
+            System.out.println(sql);
             Statement stat = (Statement) connection.createStatement();
             ResultSet rs = stat.executeQuery(sql);
             DiscModul cm;
