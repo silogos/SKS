@@ -6,7 +6,11 @@
 package Views.Admin.Type;
 
 import static Views.Admin.Type.Index_Type.tabel_type;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import libs.DBKoneksi;
 
@@ -15,10 +19,22 @@ public class Create_Type extends javax.swing.JFrame {
     /**
      * Creates new form Create_Karakteristik
      */
+    static String a,b,c;
+    ImageIcon imageIcon;
     public Create_Type() {
         initComponents();
-        
-        
+        imageIcon = new ImageIcon("src/Assets/SKSedit.png");
+        setIconImage(imageIcon.getImage());
+       
+        ActionListener acl = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               a=jLabel_runningtext.getText();
+               b=a.substring(0, 2);
+               c=a.substring(2, a.length());
+               jLabel_runningtext.setText(c+b);
+            }
+        };new javax.swing.Timer(100, acl).start();
     }
 
     /**
@@ -37,9 +53,11 @@ public class Create_Type extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txt_deskripsi = new javax.swing.JTextArea();
-        btn_tambah = new javax.swing.JButton();
         txt_nama_type = new javax.swing.JTextField();
+        jPanel_tambah = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel_runningtext = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -47,25 +65,48 @@ public class Create_Type extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel2.setText("Nama Type");
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel3.setText("Deskripsi");
 
         txt_deskripsi.setColumns(20);
         txt_deskripsi.setRows(5);
         jScrollPane1.setViewportView(txt_deskripsi);
 
-        btn_tambah.setText("Tambah");
-        btn_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel_tambah.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_tambahMouseClicked(evt);
+                jPanel_tambahMouseClicked(evt);
             }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btn_tambahMouseEntered(evt);
+                jPanel_tambahMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel_tambahMouseExited(evt);
             }
         });
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setText("Tambah");
+
+        javax.swing.GroupLayout jPanel_tambahLayout = new javax.swing.GroupLayout(jPanel_tambah);
+        jPanel_tambah.setLayout(jPanel_tambahLayout);
+        jPanel_tambahLayout.setHorizontalGroup(
+            jPanel_tambahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_tambahLayout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGap(25, 25, 25))
+        );
+        jPanel_tambahLayout.setVerticalGroup(
+            jPanel_tambahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_tambahLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -76,12 +117,13 @@ public class Create_Type extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
-                .addGap(72, 72, 72)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 304, Short.MAX_VALUE)
-                    .addComponent(btn_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_nama_type))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jScrollPane1)
+                        .addComponent(txt_nama_type, javax.swing.GroupLayout.PREFERRED_SIZE, 304, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -94,14 +136,18 @@ public class Create_Type extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_tambah, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                .addGap(5, 5, 5))
+                .addGap(18, 18, 18)
+                .addComponent(jPanel_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Tambah Type");
+
+        jLabel_runningtext.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel_runningtext.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_runningtext.setText("                                                                                 Survey Kepribadian Seseorang");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -109,17 +155,24 @@ public class Create_Type extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(43, 43, 43)
                 .addComponent(jLabel1)
-                .addContainerGap(262, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel_runningtext, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(13, Short.MAX_VALUE)
+                .addContainerGap(25, Short.MAX_VALUE)
                 .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel_runningtext)
+                .addGap(23, 23, 23))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -173,7 +226,41 @@ public class Create_Type extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
-    private void btn_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseClicked
+    public void SetColour (JPanel panel){
+        panel.setBackground(new java.awt.Color(153,153,255));
+    }
+    public void resetColour(JPanel panel){
+        panel.setBackground(new java.awt.Color(255,255,255));
+    }
+    
+    public void setwarna (JPanel panel){
+        panel.setBackground(new java.awt.Color(255,255,255));
+    }
+    public void resetwarna(JPanel panel){
+        panel.setBackground(new java.awt.Color(153,153,255));
+    }
+    
+     public void setwarnaclose (JPanel panel){
+         panel.setBackground(new java.awt.Color(153,153,255));
+       
+    }
+    public void resetwarnacolose(JPanel panel){
+         panel.setBackground(new java.awt.Color(255,255,255));
+    }
+    
+    private void jPanel_tambahMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_tambahMouseEntered
+        // TODO add your handling code here:
+        SetColour(jPanel_tambah);
+    }//GEN-LAST:event_jPanel_tambahMouseEntered
+
+    private void jPanel_tambahMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_tambahMouseExited
+        // TODO add your handling code here:
+        
+        resetColour(jPanel_tambah);
+    }//GEN-LAST:event_jPanel_tambahMouseExited
+
+    private void jPanel_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_tambahMouseClicked
+        // TODO add your handling code here:
         try {
             if (txt_nama_type.getText().equals("")) {
                     JOptionPane.showMessageDialog(null, "Silahkan Isi Data Nama Type Terlebih Dahulu");
@@ -191,11 +278,7 @@ public class Create_Type extends javax.swing.JFrame {
             }
         } catch (Exception e) {
         }
-    }//GEN-LAST:event_btn_tambahMouseClicked
-
-    private void btn_tambahMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_tambahMouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_tambahMouseEntered
+    }//GEN-LAST:event_jPanel_tambahMouseClicked
 
     /**
      * @param args the command line arguments
@@ -234,13 +317,15 @@ public class Create_Type extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_tambah;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel_runningtext;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel_tambah;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JTextArea txt_deskripsi;
     public javax.swing.JTextField txt_nama_type;

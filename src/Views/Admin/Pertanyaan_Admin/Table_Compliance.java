@@ -20,6 +20,10 @@ public class Table_Compliance extends javax.swing.JFrame {
     public Table_Compliance() {
         initComponents();
         tampilTabel();
+         initComponents();
+ 
+          // Baris kode ini yang membuat JFrame tampil di tengah layar
+          setLocationRelativeTo(this);
     }
 
     /**
@@ -66,13 +70,13 @@ public class Table_Compliance extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -90,6 +94,20 @@ public class Table_Compliance extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tbl_complianceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_complianceMouseClicked
+        try {
+            DefaultTableModel model = (DefaultTableModel) tbl_compliance.getModel();
+            db.bahasasql = "SELECT * FROM characteristic where id = '"+ model.getValueAt(tbl_compliance.getSelectedRow(), 0)+"'";
+            db.ambilData();
+            db.hasilSet.beforeFirst();
+            while (db.hasilSet.next()) {
+                Create_Pertanyaan.txt_compliance.setText(db.hasilSet.getString("id"));
+            }
+            this.dispose();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_tbl_complianceMouseClicked
 DBKoneksi db = new DBKoneksi();
 public void tampilTabel(){
         try {
@@ -109,20 +127,6 @@ public void tampilTabel(){
         } catch (Exception e) {
         }
 }
-    private void tbl_complianceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_complianceMouseClicked
-        try {
-            DefaultTableModel model = (DefaultTableModel) tbl_compliance.getModel();
-            db.bahasasql = "SELECT * FROM characteristic where id = '"+ model.getValueAt(tbl_compliance.getSelectedRow(), 0)+"'";
-            db.ambilData();
-            db.hasilSet.beforeFirst();
-            while (db.hasilSet.next()) {                
-                Create_Pertanyaan.txt_compliance.setText(db.hasilSet.getString("id"));
-            }
-            this.dispose();
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_tbl_complianceMouseClicked
-
     /**
      * @param args the command line arguments
      */

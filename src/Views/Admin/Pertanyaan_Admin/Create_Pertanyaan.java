@@ -5,7 +5,11 @@
  */
 package Views.Admin.Pertanyaan_Admin;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import libs.DBKoneksi;
 
 /**
@@ -16,9 +20,22 @@ public class Create_Pertanyaan extends javax.swing.JFrame {
 
     /**
      * Creates new form Create_Karakteristik
-     */
+     */ImageIcon imageIcon;
+     static String a,b,c;
     public Create_Pertanyaan() {
         initComponents();
+         imageIcon = new ImageIcon("src/Assets/SKSedit.png");
+        setIconImage(imageIcon.getImage());
+        
+         ActionListener acl = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               a=jLabel_runningtext.getText();
+               b=a.substring(0, 2);
+               c=a.substring(2, a.length());
+               jLabel_runningtext.setText(c+b);
+            }
+        };new javax.swing.Timer(100, acl).start();
     }
 
     /**
@@ -35,18 +52,25 @@ public class Create_Pertanyaan extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btn_cari_dominan = new javax.swing.JButton();
         txt_dominan = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
         txt_influence = new javax.swing.JTextField();
-        btn_cari_influence = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         txt_steadiness = new javax.swing.JTextField();
-        btn_cari_steadiness = new javax.swing.JButton();
-        btn_cari_compliance = new javax.swing.JButton();
         txt_compliance = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
+        jPanel_tambah = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel_cariDominan = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jPanel_cariInfluence = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel_Stediness = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel_compliance = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel_runningtext = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -60,124 +84,268 @@ public class Create_Pertanyaan extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Influence");
 
-        btn_cari_dominan.setText("Cari");
-        btn_cari_dominan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_cari_dominanMouseClicked(evt);
-            }
-        });
-
         txt_dominan.setEditable(false);
 
-        jButton3.setText("Tambah");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
-            }
-        });
-
         txt_influence.setEditable(false);
-
-        btn_cari_influence.setText("Cari");
-        btn_cari_influence.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_cari_influenceMouseClicked(evt);
-            }
-        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Steadiness");
 
         txt_steadiness.setEditable(false);
 
-        btn_cari_steadiness.setText("Cari");
-        btn_cari_steadiness.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_cari_steadinessMouseClicked(evt);
-            }
-        });
-
-        btn_cari_compliance.setText("Cari");
-        btn_cari_compliance.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_cari_complianceMouseClicked(evt);
-            }
-        });
-
         txt_compliance.setEditable(false);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Compliance");
 
+        jPanel_tambah.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_tambah.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel_tambahMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel_tambahMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel_tambahMouseExited(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel7.setText("Tambah");
+
+        javax.swing.GroupLayout jPanel_tambahLayout = new javax.swing.GroupLayout(jPanel_tambah);
+        jPanel_tambah.setLayout(jPanel_tambahLayout);
+        jPanel_tambahLayout.setHorizontalGroup(
+            jPanel_tambahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_tambahLayout.createSequentialGroup()
+                .addContainerGap(27, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(23, 23, 23))
+        );
+        jPanel_tambahLayout.setVerticalGroup(
+            jPanel_tambahLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_tambahLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel_cariDominan.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel_cariDominan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_cariDominan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel_cariDominanMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel_cariDominanMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel_cariDominanMouseExited(evt);
+            }
+        });
+
+        jLabel8.setText("Cari");
+
+        javax.swing.GroupLayout jPanel_cariDominanLayout = new javax.swing.GroupLayout(jPanel_cariDominan);
+        jPanel_cariDominan.setLayout(jPanel_cariDominanLayout);
+        jPanel_cariDominanLayout.setHorizontalGroup(
+            jPanel_cariDominanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_cariDominanLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel8)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        jPanel_cariDominanLayout.setVerticalGroup(
+            jPanel_cariDominanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_cariDominanLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel_cariInfluence.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel_cariInfluence.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_cariInfluence.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel_cariInfluenceMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel_cariInfluenceMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel_cariInfluenceMouseExited(evt);
+            }
+        });
+
+        jLabel9.setText("Cari");
+
+        javax.swing.GroupLayout jPanel_cariInfluenceLayout = new javax.swing.GroupLayout(jPanel_cariInfluence);
+        jPanel_cariInfluence.setLayout(jPanel_cariInfluenceLayout);
+        jPanel_cariInfluenceLayout.setHorizontalGroup(
+            jPanel_cariInfluenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_cariInfluenceLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel9)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel_cariInfluenceLayout.setVerticalGroup(
+            jPanel_cariInfluenceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_cariInfluenceLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel9)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel_Stediness.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel_Stediness.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Stediness.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel_StedinessMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel_StedinessMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel_StedinessMouseExited(evt);
+            }
+        });
+
+        jLabel10.setText("Cari");
+
+        javax.swing.GroupLayout jPanel_StedinessLayout = new javax.swing.GroupLayout(jPanel_Stediness);
+        jPanel_Stediness.setLayout(jPanel_StedinessLayout);
+        jPanel_StedinessLayout.setHorizontalGroup(
+            jPanel_StedinessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_StedinessLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel10)
+                .addContainerGap(22, Short.MAX_VALUE))
+        );
+        jPanel_StedinessLayout.setVerticalGroup(
+            jPanel_StedinessLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_StedinessLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel10)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel_compliance.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel_compliance.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_compliance.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel_complianceMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel_complianceMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel_complianceMouseExited(evt);
+            }
+        });
+
+        jLabel11.setText("Cari");
+
+        javax.swing.GroupLayout jPanel_complianceLayout = new javax.swing.GroupLayout(jPanel_compliance);
+        jPanel_compliance.setLayout(jPanel_complianceLayout);
+        jPanel_complianceLayout.setHorizontalGroup(
+            jPanel_complianceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_complianceLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addGap(23, 23, 23))
+        );
+        jPanel_complianceLayout.setVerticalGroup(
+            jPanel_complianceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_complianceLayout.createSequentialGroup()
+                .addGap(8, 8, 8)
+                .addComponent(jLabel11)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(43, 43, 43)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(30, 30, 30)
-                        .addComponent(txt_steadiness, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_cari_steadiness, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel_cariDominan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(60, 60, 60)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(txt_dominan, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_cari_dominan, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(txt_influence, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_cari_influence, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(txt_compliance, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btn_cari_compliance, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(50, Short.MAX_VALUE))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel3)
+                                        .addGap(314, 314, 314))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                                .addComponent(jLabel4)
+                                                .addGap(21, 21, 21)
+                                                .addComponent(txt_steadiness))
+                                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                                .addComponent(jLabel5)
+                                                .addGap(15, 15, 15)
+                                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(jPanel_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(txt_compliance, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addGap(24, 24, 24)))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel_compliance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jPanel_Stediness, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jPanel_cariInfluence, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addGap(31, 31, 31)
+                                    .addComponent(txt_dominan, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txt_influence, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(57, 57, 57))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txt_dominan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_cari_dominan, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txt_influence, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_cari_influence, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txt_steadiness, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_cari_steadiness, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(txt_compliance, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_cari_compliance, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(52, 52, 52)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel_cariDominan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_dominan, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)))
+                .addGap(30, 30, 30)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel_cariInfluence, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_influence, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3)))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel_Stediness, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(txt_steadiness, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txt_compliance, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5))
+                    .addComponent(jPanel_compliance, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(33, 33, 33)
+                .addComponent(jPanel_tambah, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Tambah Pertanyaan");
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/icons8-add-new-50.png"))); // NOI18N
+
+        jLabel_runningtext.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel_runningtext.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_runningtext.setText("                                                                              Survey Kepribadian Seseorang");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -185,18 +353,31 @@ public class Create_Pertanyaan extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel6)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel_runningtext, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(27, 27, 27))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)))
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel_runningtext)
+                .addGap(36, 36, 36))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -207,7 +388,7 @@ public class Create_Pertanyaan extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -224,35 +405,50 @@ public class Create_Pertanyaan extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btn_cari_dominanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cari_dominanMouseClicked
-        Table_Dominan dominan = new Table_Dominan();
-        dominan.show();
-    }//GEN-LAST:event_btn_cari_dominanMouseClicked
-
-    private void btn_cari_influenceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cari_influenceMouseClicked
-        Table_Influence influence = new Table_Influence();
-        influence.show();
-    }//GEN-LAST:event_btn_cari_influenceMouseClicked
-
-    private void btn_cari_steadinessMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cari_steadinessMouseClicked
-        Table_Steadiness steadiness = new Table_Steadiness();
-        steadiness.show();
-    }//GEN-LAST:event_btn_cari_steadinessMouseClicked
-
-    private void btn_cari_complianceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_cari_complianceMouseClicked
-        Table_Compliance compliance = new Table_Compliance();
-        compliance.show();
-    }//GEN-LAST:event_btn_cari_complianceMouseClicked
     DBKoneksi db = new DBKoneksi();
     public static void bersih(){
         txt_dominan.setText("");
         txt_influence.setText("");
         txt_compliance.setText("");
         txt_steadiness.setText("");
+        
+    }  public void SetColour (JPanel panel){
+        panel.setBackground(new java.awt.Color(153,204,255));
     }
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
-        try {
+    public void resetColour(JPanel panel){
+        panel.setBackground(new java.awt.Color(255,255,255));
+    }
+      public void SetColourdominan (JPanel panel){
+        panel.setBackground(new java.awt.Color(204,204,0));
+    }
+    public void resetColourdominan(JPanel panel){
+        panel.setBackground(new java.awt.Color(255,255,255));
+    }
+    
+    public void setwarnainflunce (JPanel panel){
+        panel.setBackground(new java.awt.Color(255,255,255));
+    }
+    public void resetwarnainflunce(JPanel panel){
+        panel.setBackground(new java.awt.Color(255,255,0));
+    }
+    
+     public void setwarnaclosestediness (JPanel panel){
+         panel.setBackground(new java.awt.Color(153,255,0));
+       
+    }
+    public void resetwarnacolosestediness(JPanel panel){
+         panel.setBackground(new java.awt.Color(255,255,255));
+    }
+     public void setwarnaclosecompliance (JPanel panel){
+         panel.setBackground(new java.awt.Color(0,255,204));
+       
+    }
+    public void resetwarnacolosecompliance(JPanel panel){
+         panel.setBackground(new java.awt.Color(255,255,255));
+    }
+    private void jPanel_tambahMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_tambahMouseClicked
+        // TODO add your handling code here:
+                try {
             if (txt_dominan.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Silahkan Isi Data Dominan Terlebih Dahulu");
             } else if (txt_influence.getText().equals("")){
@@ -272,7 +468,82 @@ public class Create_Pertanyaan extends javax.swing.JFrame {
             }
         } catch (Exception e) {
         }
-    }//GEN-LAST:event_jButton3MouseClicked
+    }//GEN-LAST:event_jPanel_tambahMouseClicked
+
+    private void jPanel_tambahMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_tambahMouseEntered
+        // TODO add your handling code here:
+        SetColour(jPanel_tambah);
+    }//GEN-LAST:event_jPanel_tambahMouseEntered
+
+    private void jPanel_tambahMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_tambahMouseExited
+        // TODO add your handling code here:
+        resetColour(jPanel_tambah);
+    }//GEN-LAST:event_jPanel_tambahMouseExited
+
+    private void jPanel_cariDominanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_cariDominanMouseEntered
+        // TODO add your handling code here:
+        SetColourdominan(jPanel_cariDominan);
+    }//GEN-LAST:event_jPanel_cariDominanMouseEntered
+
+    private void jPanel_cariDominanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_cariDominanMouseExited
+        // TODO add your handling code here:
+        resetColourdominan(jPanel_cariDominan);
+    }//GEN-LAST:event_jPanel_cariDominanMouseExited
+
+    private void jPanel_cariDominanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_cariDominanMouseClicked
+        // TODO add your handling code here:
+                Table_Dominan dominan = new Table_Dominan();
+        dominan.show();
+    }//GEN-LAST:event_jPanel_cariDominanMouseClicked
+
+    private void jPanel_cariInfluenceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_cariInfluenceMouseClicked
+        // TODO add your handling code here:
+                Table_Influence influence = new Table_Influence();
+        influence.show();
+    }//GEN-LAST:event_jPanel_cariInfluenceMouseClicked
+
+    private void jPanel_cariInfluenceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_cariInfluenceMouseEntered
+        // TODO add your handling code here:
+        resetwarnainflunce(jPanel_cariInfluence);
+    }//GEN-LAST:event_jPanel_cariInfluenceMouseEntered
+
+    private void jPanel_cariInfluenceMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_cariInfluenceMouseExited
+        // TODO add your handling code here:
+        
+        setwarnainflunce(jPanel_cariInfluence);
+    }//GEN-LAST:event_jPanel_cariInfluenceMouseExited
+
+    private void jPanel_StedinessMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_StedinessMouseClicked
+        // TODO add your handling code here:
+                Table_Steadiness steadiness = new Table_Steadiness();
+        steadiness.show();
+    }//GEN-LAST:event_jPanel_StedinessMouseClicked
+
+    private void jPanel_StedinessMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_StedinessMouseEntered
+        // TODO add your handling code here:
+        setwarnaclosestediness(jPanel_Stediness);
+    }//GEN-LAST:event_jPanel_StedinessMouseEntered
+
+    private void jPanel_StedinessMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_StedinessMouseExited
+        // TODO add your handling code here:
+        resetwarnacolosestediness(jPanel_Stediness);
+    }//GEN-LAST:event_jPanel_StedinessMouseExited
+
+    private void jPanel_complianceMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_complianceMouseClicked
+        // TODO add your handling code here:
+                Table_Compliance compliance = new Table_Compliance();
+        compliance.show();
+    }//GEN-LAST:event_jPanel_complianceMouseClicked
+
+    private void jPanel_complianceMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_complianceMouseEntered
+        // TODO add your handling code here:
+        setwarnaclosecompliance(jPanel_compliance);
+    }//GEN-LAST:event_jPanel_complianceMouseEntered
+
+    private void jPanel_complianceMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_complianceMouseExited
+        // TODO add your handling code here:
+        resetwarnacolosecompliance(jPanel_compliance);
+    }//GEN-LAST:event_jPanel_complianceMouseExited
 
     /**
      * @param args the command line arguments
@@ -311,19 +582,26 @@ public class Create_Pertanyaan extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_cari_compliance;
-    private javax.swing.JButton btn_cari_dominan;
-    private javax.swing.JButton btn_cari_influence;
-    private javax.swing.JButton btn_cari_steadiness;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel_runningtext;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel_Stediness;
+    private javax.swing.JPanel jPanel_cariDominan;
+    private javax.swing.JPanel jPanel_cariInfluence;
+    private javax.swing.JPanel jPanel_compliance;
+    private javax.swing.JPanel jPanel_tambah;
     public static javax.swing.JTextField txt_compliance;
     public static javax.swing.JTextField txt_dominan;
     public static javax.swing.JTextField txt_influence;

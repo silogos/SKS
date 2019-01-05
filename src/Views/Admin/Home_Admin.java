@@ -9,6 +9,8 @@ import Views.Admin.Karakteristik.Index_Karakteristik;
 import Views.Admin.Pertanyaan_Admin.Index_Pertanyaan;
 import Views.Admin.Type.Index_Type;
 import Views.Home.Home;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 /**
  *
  * @author Ari Nuryadi
@@ -17,9 +19,11 @@ public class Home_Admin extends javax.swing.JFrame {
 
     /**
      * Creates new form Home_Admin
-     */
+     */ImageIcon imageIcon;
     public Home_Admin() {
         initComponents();
+        imageIcon = new ImageIcon("src/Assets/SKSedit.png");
+        setIconImage(imageIcon.getImage());
     }
 
     /**
@@ -34,16 +38,25 @@ public class Home_Admin extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jDesktopPane1 = new javax.swing.JDesktopPane();
-        btn_karakteristik = new javax.swing.JButton();
-        btn_pertanyaan = new javax.swing.JButton();
-        btn_type = new javax.swing.JButton();
-        btn_keluar = new javax.swing.JButton();
+        jPanel_karakteritik = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel_Type = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel_Pertanyaan = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel_keluar = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(124, 111, 255));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(124, 111, 255));
 
         jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -51,11 +64,11 @@ public class Home_Admin extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1081, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 505, Short.MAX_VALUE)
+            .addGap(0, 627, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -66,64 +79,213 @@ public class Home_Admin extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(66, Short.MAX_VALUE))
         );
 
-        btn_karakteristik.setText("Karakteristik");
-        btn_karakteristik.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel_karakteritik.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel_karakteritik.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_karakteritik.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_karakteristikMouseClicked(evt);
+                jPanel_karakteritikMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel_karakteritikMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel_karakteritikMouseExited(evt);
             }
         });
 
-        btn_pertanyaan.setText("Pertanyaan");
-        btn_pertanyaan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_pertanyaanActionPerformed(evt);
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel1.setText("Karakteristik");
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/icons8-inquiry-40.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel_karakteritikLayout = new javax.swing.GroupLayout(jPanel_karakteritik);
+        jPanel_karakteritik.setLayout(jPanel_karakteritikLayout);
+        jPanel_karakteritikLayout.setHorizontalGroup(
+            jPanel_karakteritikLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_karakteritikLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel_karakteritikLayout.setVerticalGroup(
+            jPanel_karakteritikLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_karakteritikLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel_karakteritikLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel_Type.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel_Type.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Type.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel_TypeMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel_TypeMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel_TypeMouseExited(evt);
             }
         });
 
-        btn_type.setText("Type");
-        btn_type.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_typeActionPerformed(evt);
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel2.setText("Type");
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/icons8-type-40.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel_TypeLayout = new javax.swing.GroupLayout(jPanel_Type);
+        jPanel_Type.setLayout(jPanel_TypeLayout);
+        jPanel_TypeLayout.setHorizontalGroup(
+            jPanel_TypeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_TypeLayout.createSequentialGroup()
+                .addGap(38, 38, 38)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addContainerGap(33, Short.MAX_VALUE))
+        );
+        jPanel_TypeLayout.setVerticalGroup(
+            jPanel_TypeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_TypeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel_TypeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel_Pertanyaan.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel_Pertanyaan.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_Pertanyaan.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel_PertanyaanMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel_PertanyaanMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel_PertanyaanMouseExited(evt);
             }
         });
 
-        btn_keluar.setText("Keluar");
-        btn_keluar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_keluarActionPerformed(evt);
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel3.setText("Pertanyaan");
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/icons8-puzzled-40.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel_PertanyaanLayout = new javax.swing.GroupLayout(jPanel_Pertanyaan);
+        jPanel_Pertanyaan.setLayout(jPanel_PertanyaanLayout);
+        jPanel_PertanyaanLayout.setHorizontalGroup(
+            jPanel_PertanyaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_PertanyaanLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel_PertanyaanLayout.setVerticalGroup(
+            jPanel_PertanyaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_PertanyaanLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel_PertanyaanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel_keluar.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel_keluar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel_keluar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel_keluarMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel_keluarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jPanel_keluarMouseExited(evt);
             }
         });
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel4.setText("Keluar");
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/icons8-exit-40.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel_keluarLayout = new javax.swing.GroupLayout(jPanel_keluar);
+        jPanel_keluar.setLayout(jPanel_keluarLayout);
+        jPanel_keluarLayout.setHorizontalGroup(
+            jPanel_keluarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_keluarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel_keluarLayout.setVerticalGroup(
+            jPanel_keluarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel_keluarLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel_keluarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel4))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Hellooo Admin !");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(169, 169, 169)
-                .addComponent(btn_karakteristik)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(33, 33, 33)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel_karakteritik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel_Type, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(btn_type, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btn_pertanyaan, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 511, Short.MAX_VALUE)
-                .addComponent(btn_keluar, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel_Pertanyaan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel_keluar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_karakteristik, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_pertanyaan, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_type, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_keluar, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jPanel_Pertanyaan, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel_Type, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jPanel_keluar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jPanel_karakteritik, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel9)
+                        .addGap(31, 31, 31)))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -140,9 +302,76 @@ public class Home_Admin extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+    public void SetColourkarakteristik (JPanel panel){
+        panel.setBackground(new java.awt.Color(255,255,0));
+    }
+    public void resetColourkarakteristik(JPanel panel){
+        panel.setBackground(new java.awt.Color(255,255,255));
+    }
+    public void SetColourtype (JPanel panel){
+        panel.setBackground(new java.awt.Color(204,255,0));
+    }
+    public void resetColourtype(JPanel panel){
+        panel.setBackground(new java.awt.Color(255,255,255));
+    }
+    public void SetColourpertanyaan (JPanel panel){
+        panel.setBackground(new java.awt.Color(255,102,51));
+    }
+    public void resetColourpertanyaan (JPanel panel){
+        panel.setBackground(new java.awt.Color(255,255,255));
+    }
+    public void SetColourkeluar (JPanel panel){
+        panel.setBackground(new java.awt.Color(204,204,255));
+    }
+    public void resetColourkeluar(JPanel panel){
+        panel.setBackground(new java.awt.Color(255,255,255));
+    }
+    private void jPanel_karakteritikMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_karakteritikMouseEntered
+        // TODO add your handling code here:
+        SetColourkarakteristik(jPanel_karakteritik);
+    }//GEN-LAST:event_jPanel_karakteritikMouseEntered
 
-    private void btn_pertanyaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pertanyaanActionPerformed
-        Index_Pertanyaan index_Pertanyaan = new Index_Pertanyaan();
+    private void jPanel_karakteritikMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_karakteritikMouseExited
+        // TODO add your handling code here:
+        resetColourkarakteristik(jPanel_karakteritik);
+    }//GEN-LAST:event_jPanel_karakteritikMouseExited
+
+    private void jPanel_karakteritikMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_karakteritikMouseClicked
+        // TODO add your handling code here:
+                Index_Karakteristik index_Karakteristik = new Index_Karakteristik();
+        jDesktopPane1.add(index_Karakteristik);
+        index_Karakteristik.show();
+        try {
+            index_Karakteristik.setMaximum(true);
+           
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jPanel_karakteritikMouseClicked
+
+    private void jPanel_TypeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_TypeMouseClicked
+        // TODO add your handling code here:
+                Index_Type index_Type = new Index_Type();
+        jDesktopPane1.add(index_Type);
+        index_Type.show();
+        try {
+            index_Type.setMaximum(true);
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_jPanel_TypeMouseClicked
+
+    private void jPanel_TypeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_TypeMouseEntered
+        // TODO add your handling code here:
+        SetColourtype(jPanel_Type);
+    }//GEN-LAST:event_jPanel_TypeMouseEntered
+
+    private void jPanel_TypeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_TypeMouseExited
+        // TODO add your handling code here:
+        resetColourtype(jPanel_Type);
+    }//GEN-LAST:event_jPanel_TypeMouseExited
+
+    private void jPanel_PertanyaanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_PertanyaanMouseClicked
+        // TODO add your handling code here:
+                Index_Pertanyaan index_Pertanyaan = new Index_Pertanyaan();
         jDesktopPane1.add(index_Pertanyaan);
         index_Pertanyaan.show();
         if (index_Pertanyaan.isVisible()) {
@@ -153,34 +382,34 @@ public class Home_Admin extends javax.swing.JFrame {
             } catch (Exception e) {
             }
         }
-    }//GEN-LAST:event_btn_pertanyaanActionPerformed
+    }//GEN-LAST:event_jPanel_PertanyaanMouseClicked
 
-    private void btn_typeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_typeActionPerformed
-        Index_Type index_Type = new Index_Type();
-        jDesktopPane1.add(index_Type);
-        index_Type.show();
-        try {
-            index_Type.setMaximum(true);
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_btn_typeActionPerformed
+    private void jPanel_PertanyaanMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_PertanyaanMouseEntered
+        // TODO add your handling code here:
+        SetColourpertanyaan(jPanel_Pertanyaan);
+    }//GEN-LAST:event_jPanel_PertanyaanMouseEntered
 
-    private void btn_karakteristikMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_karakteristikMouseClicked
-        Index_Karakteristik index_Karakteristik = new Index_Karakteristik();
-        jDesktopPane1.add(index_Karakteristik);
-        index_Karakteristik.show();
-        try {
-            index_Karakteristik.setMaximum(true);
-           
-        } catch (Exception e) {
-        }
-    }//GEN-LAST:event_btn_karakteristikMouseClicked
+    private void jPanel_PertanyaanMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_PertanyaanMouseExited
+        // TODO add your handling code here:
+        resetColourpertanyaan(jPanel_Pertanyaan);
+    }//GEN-LAST:event_jPanel_PertanyaanMouseExited
 
-    private void btn_keluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_keluarActionPerformed
-        Home home = new Home();
+    private void jPanel_keluarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_keluarMouseClicked
+        // TODO add your handling code here:
+                Home home = new Home();
         home.show();
         this.dispose();
-    }//GEN-LAST:event_btn_keluarActionPerformed
+    }//GEN-LAST:event_jPanel_keluarMouseClicked
+
+    private void jPanel_keluarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_keluarMouseEntered
+        // TODO add your handling code here:
+        SetColourkeluar(jPanel_keluar);
+    }//GEN-LAST:event_jPanel_keluarMouseEntered
+
+    private void jPanel_keluarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_keluarMouseExited
+        // TODO add your handling code here:
+        resetColourkeluar(jPanel_keluar);
+    }//GEN-LAST:event_jPanel_keluarMouseExited
 
     /**
      * @param args the command line arguments
@@ -218,12 +447,21 @@ public class Home_Admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_karakteristik;
-    private javax.swing.JButton btn_keluar;
-    private javax.swing.JButton btn_pertanyaan;
-    private javax.swing.JButton btn_type;
     private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel_Pertanyaan;
+    private javax.swing.JPanel jPanel_Type;
+    private javax.swing.JPanel jPanel_karakteritik;
+    private javax.swing.JPanel jPanel_keluar;
     // End of variables declaration//GEN-END:variables
 }

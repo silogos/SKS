@@ -7,6 +7,7 @@ package Views.Home;
 
 import Views.Start.Starts;
 import Views.Admin.Login;
+import Views.Petunjuk.Petunjuk;
 import Views.Tentang.Tentang;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -28,8 +29,9 @@ public class Home extends javax.swing.JFrame {
     ImageIcon imageIcon;
       public Home() {
         initComponents();
-        imageIcon = new ImageIcon("src/AI/SKSedit.png");
+         imageIcon = new ImageIcon("src/Assets/SKSedit.png");
         setIconImage(imageIcon.getImage());
+       
        
         
         
@@ -72,6 +74,7 @@ public class Home extends javax.swing.JFrame {
         jLabel1.setText("Menu Utama");
 
         jPanel_close.setBackground(new java.awt.Color(124, 111, 255));
+        jPanel_close.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel_closeMouseClicked(evt);
@@ -117,19 +120,17 @@ public class Home extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel_close, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                    .addComponent(jPanel_close, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel_mulai.setBackground(new java.awt.Color(124, 111, 255));
+        jPanel_mulai.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_mulai.setPreferredSize(new java.awt.Dimension(180, 70));
         jPanel_mulai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -160,7 +161,7 @@ public class Home extends javax.swing.JFrame {
             .addGroup(jPanel_mulaiLayout.createSequentialGroup()
                 .addGap(67, 67, 67)
                 .addComponent(jLabel2)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         jPanel_mulaiLayout.setVerticalGroup(
             jPanel_mulaiLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,8 +172,12 @@ public class Home extends javax.swing.JFrame {
         );
 
         jpanel_petunjuk.setBackground(new java.awt.Color(124, 111, 255));
+        jpanel_petunjuk.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jpanel_petunjuk.setPreferredSize(new java.awt.Dimension(180, 70));
         jpanel_petunjuk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpanel_petunjukMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jpanel_petunjukMouseEntered(evt);
             }
@@ -196,7 +201,7 @@ public class Home extends javax.swing.JFrame {
         jpanel_petunjukLayout.setHorizontalGroup(
             jpanel_petunjukLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpanel_petunjukLayout.createSequentialGroup()
-                .addContainerGap(61, Short.MAX_VALUE)
+                .addContainerGap(59, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(51, 51, 51))
         );
@@ -209,6 +214,7 @@ public class Home extends javax.swing.JFrame {
         );
 
         jPanel_tentang.setBackground(new java.awt.Color(124, 111, 255));
+        jPanel_tentang.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_tentang.setPreferredSize(new java.awt.Dimension(180, 70));
         jPanel_tentang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -237,7 +243,7 @@ public class Home extends javax.swing.JFrame {
         jPanel_tentangLayout.setHorizontalGroup(
             jPanel_tentangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel_tentangLayout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
+                .addContainerGap(60, Short.MAX_VALUE)
                 .addComponent(jLabel6)
                 .addGap(54, 54, 54))
         );
@@ -313,7 +319,7 @@ public class Home extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jPanel_tentang, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(jPanel_logout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -353,7 +359,24 @@ public class Home extends javax.swing.JFrame {
     public void resetColour(JPanel panel){
         panel.setBackground(new java.awt.Color(255,255,255));
     }
-    
+    public void SetColourmulai (JPanel panel){
+        panel.setBackground(new java.awt.Color(153,153,255));
+    }
+    public void resetColourmulai(JPanel panel){
+        panel.setBackground(new java.awt.Color(255,102,102));
+    }
+    public void SetColourpetunjuk (JPanel panel){
+        panel.setBackground(new java.awt.Color(153,153,255));
+    }
+    public void resetColourpetunjuk(JPanel panel){
+        panel.setBackground(new java.awt.Color(255,255,0));
+    }
+     public void SetColourtentang (JPanel panel){
+        panel.setBackground(new java.awt.Color(153,153,255));
+    }
+    public void resetColourtentang(JPanel panel){
+        panel.setBackground(new java.awt.Color(0,255,51));
+    }
     public void setwarna (JPanel panel){
         panel.setBackground(new java.awt.Color(255,255,255));
     }
@@ -372,37 +395,37 @@ public class Home extends javax.swing.JFrame {
     
     private void jPanel_mulaiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mulaiMouseEntered
         // TODO add your handling code here:
-         resetColour(jPanel_mulai);
+         resetColourmulai(jPanel_mulai);
     }//GEN-LAST:event_jPanel_mulaiMouseEntered
 
     private void jPanel_mulaiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mulaiMouseExited
         // TODO add your handling code here:
-        SetColour(jPanel_mulai);
+        SetColourmulai(jPanel_mulai);
     }//GEN-LAST:event_jPanel_mulaiMouseExited
 
     private void jpanel_petunjukMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpanel_petunjukMouseEntered
         // TODO add your handling code here:
-        resetColour(jpanel_petunjuk);
+        resetColourpetunjuk(jpanel_petunjuk);
     }//GEN-LAST:event_jpanel_petunjukMouseEntered
 
     private void jpanel_petunjukMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpanel_petunjukMouseExited
         // TODO add your handling code here:
-        SetColour(jpanel_petunjuk);
+        SetColourpetunjuk(jpanel_petunjuk);
     }//GEN-LAST:event_jpanel_petunjukMouseExited
 
     private void jPanel_tentangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_tentangMouseEntered
         // TODO add your handling code here:
-        resetColour(jPanel_tentang);
+        resetColourtentang(jPanel_tentang);
     }//GEN-LAST:event_jPanel_tentangMouseEntered
 
     private void jPanel_tentangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_tentangMouseExited
         // TODO add your handling code here:
-        SetColour(jPanel_tentang);
+        SetColourtentang(jPanel_tentang);
     }//GEN-LAST:event_jPanel_tentangMouseExited
 
     private void jPanel_mulaiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mulaiMousePressed
         // TODO add your handling code here:
-        resetColour(jPanel_mulai);
+        resetColourtentang(jPanel_mulai);
     }//GEN-LAST:event_jPanel_mulaiMousePressed
 
     private void jPanel_mulaiMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mulaiMouseReleased
@@ -412,22 +435,22 @@ public class Home extends javax.swing.JFrame {
 
     private void jpanel_petunjukMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpanel_petunjukMousePressed
         // TODO add your handling code here:
-        resetColour(jpanel_petunjuk);
+        resetColourpetunjuk(jpanel_petunjuk);
     }//GEN-LAST:event_jpanel_petunjukMousePressed
 
     private void jpanel_petunjukMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpanel_petunjukMouseReleased
         // TODO add your handling code here:
-        SetColour(jpanel_petunjuk);
+        SetColourpetunjuk(jpanel_petunjuk);
     }//GEN-LAST:event_jpanel_petunjukMouseReleased
 
     private void jPanel_tentangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_tentangMousePressed
         // TODO add your handling code here:
-        resetColour(jPanel_tentang);
+        resetColourtentang(jPanel_tentang);
     }//GEN-LAST:event_jPanel_tentangMousePressed
 
     private void jPanel_tentangMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_tentangMouseReleased
         // TODO add your handling code here:
-        SetColour(jPanel_tentang);
+        SetColourtentang(jPanel_tentang);
     }//GEN-LAST:event_jPanel_tentangMouseReleased
 
     private void jPanel_closeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_closeMouseEntered
@@ -501,6 +524,13 @@ public class Home extends javax.swing.JFrame {
         tentang.show();
         this.dispose();
     }//GEN-LAST:event_jPanel_tentangMouseClicked
+
+    private void jpanel_petunjukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpanel_petunjukMouseClicked
+        // TODO add your handling code here:
+        Petunjuk petunjuk = new Petunjuk();
+        petunjuk.show();
+        this.dispose();
+    }//GEN-LAST:event_jpanel_petunjukMouseClicked
 
     /**
      * @param args the command line arguments

@@ -26,7 +26,7 @@ public class Starts extends javax.swing.JFrame {
     ImageIcon imageIcon;
       public Starts() {
         initComponents();
-        imageIcon = new ImageIcon("src/AI/SKSedit.png");
+        imageIcon = new ImageIcon("src/Assets/SKSedit.png");
         setIconImage(imageIcon.getImage());
     }
 

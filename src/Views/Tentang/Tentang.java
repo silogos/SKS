@@ -27,6 +27,8 @@ public class Tentang extends javax.swing.JFrame {
        
         imageIcon = new ImageIcon("src/Assets/SKSedit.png");
         setIconImage(imageIcon.getImage());
+        this.setTitle("Welcome to About");
+        this.setLocationRelativeTo(this);
     }
 
     /**
@@ -43,7 +45,6 @@ public class Tentang extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel_close = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -54,6 +55,8 @@ public class Tentang extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         jPanel_rizal = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -66,7 +69,7 @@ public class Tentang extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Tentang");
 
-        jPanel_close.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel_close.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel_close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jPanel_closeMouseClicked(evt);
@@ -103,26 +106,23 @@ public class Tentang extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(27, 27, 27)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel_close, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44))
+                .addGap(41, 41, 41))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel_close, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
+                .addComponent(jPanel_close, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
-
-        jLabel2.setBackground(new java.awt.Color(124, 111, 255));
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(124, 111, 255));
-        jLabel2.setText("Copyright © 2018");
 
         jLabel3.setBackground(new java.awt.Color(124, 111, 255));
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -231,73 +231,88 @@ public class Tentang extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel3.setBackground(new java.awt.Color(124, 111, 255));
+
+        jLabel2.setBackground(new java.awt.Color(124, 111, 255));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("Copyright SKS TEAM© 2018");
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(250, 250, 250))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(39, 39, 39)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(249, 249, 249))
+                        .addGap(51, 51, 51)
+                        .addComponent(jPanel_amin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(35, 35, 35)
-                                .addComponent(jLabel5)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(63, 63, 63)
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jPanel_ari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(123, 123, 123))))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(86, 86, 86)
-                                .addComponent(jPanel_amin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jPanel_rizal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(30, 30, 30)))))
+                        .addGap(59, 59, 59)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel_ari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(123, 123, 123)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel_rizal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(30, 30, 30)))
                 .addGap(39, 39, 39))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(284, 284, 284)
                 .addComponent(jLabel3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel_amin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel2)
-                        .addGap(41, 41, 41))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addGap(36, 36, 36)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel6)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jPanel_ari, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7)
+                                .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel_rizal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(77, Short.MAX_VALUE))))
+                                .addComponent(jPanel_amin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel_rizal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -314,7 +329,40 @@ public class Tentang extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    public void SetColour (JPanel panel){
+        panel.setBackground(new java.awt.Color(153,153,255));
+    }
+    public void resetColour(JPanel panel){
+        panel.setBackground(new java.awt.Color(255,255,255));
+    }
+    
+    public void setwarnarizal (JPanel panel){
+        panel.setBackground(new java.awt.Color(255,255,255));
+    }
+    public void resetwarnarizal(JPanel panel){
+        panel.setBackground(new java.awt.Color(0,255,204));
+    }
+    public void setwarnamin (JPanel panel){
+        panel.setBackground(new java.awt.Color(255,255,255));
+    }
+    public void resetwarnamin(JPanel panel){
+        panel.setBackground(new java.awt.Color(153,255,153));
+    }
+    public void setwarnari (JPanel panel){
+        panel.setBackground(new java.awt.Color(255,255,255));
+    }
+    public void resetwarnari(JPanel panel){
+        panel.setBackground(new java.awt.Color(255,204,0));
+    }
+    
+     public void setwarnaclose (JPanel panel){
+         panel.setBackground(new java.awt.Color(255,255,0));
+       
+    }
+    public void resetwarnacolose(JPanel panel){
+         panel.setBackground(new java.awt.Color(255,255,255));
+    }
+   
     private void jPanel_closeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_closeMouseExited
         // TODO add your handling code here:
 
@@ -348,12 +396,12 @@ public class Tentang extends javax.swing.JFrame {
 
     private void jPanel_aminMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_aminMouseEntered
         // TODO add your handling code here:
-         setwarnaclose(jPanel_amin);
+         resetwarnamin(jPanel_amin);
     }//GEN-LAST:event_jPanel_aminMouseEntered
 
     private void jPanel_aminMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_aminMouseExited
         // TODO add your handling code here:
-         resetwarnacolose(jPanel_amin);
+         setwarnamin(jPanel_amin);
     }//GEN-LAST:event_jPanel_aminMouseExited
 
     private void jPanel_ariMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_ariMouseClicked
@@ -370,12 +418,13 @@ public class Tentang extends javax.swing.JFrame {
 
     private void jPanel_ariMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_ariMouseEntered
         // TODO add your handling code here:
-         setwarnaclose(jPanel_ari);
+         resetwarnari(jPanel_ari);
     }//GEN-LAST:event_jPanel_ariMouseEntered
 
     private void jPanel_ariMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_ariMouseExited
         // TODO add your handling code here:
-         resetwarnacolose(jPanel_ari);
+         
+         setwarnari(jPanel_ari);
     }//GEN-LAST:event_jPanel_ariMouseExited
 
     private void jPanel_rizalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_rizalMouseClicked
@@ -392,35 +441,15 @@ public class Tentang extends javax.swing.JFrame {
 
     private void jPanel_rizalMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_rizalMouseEntered
         // TODO add your handling code here:
-        setwarnaclose(jPanel_rizal);
+        resetwarnarizal(jPanel_rizal);
     }//GEN-LAST:event_jPanel_rizalMouseEntered
 
     private void jPanel_rizalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_rizalMouseExited
         // TODO add your handling code here:
-        resetwarnacolose(jPanel_rizal);
+        
+        setwarnarizal(jPanel_rizal);
     }//GEN-LAST:event_jPanel_rizalMouseExited
- public void SetColour (JPanel panel){
-        panel.setBackground(new java.awt.Color(153,153,255));
-    }
-    public void resetColour(JPanel panel){
-        panel.setBackground(new java.awt.Color(255,255,255));
-    }
     
-    public void setwarna (JPanel panel){
-        panel.setBackground(new java.awt.Color(255,255,255));
-    }
-    public void resetwarna(JPanel panel){
-        panel.setBackground(new java.awt.Color(153,153,255));
-    }
-    
-     public void setwarnaclose (JPanel panel){
-         panel.setBackground(new java.awt.Color(153,153,255));
-       
-    }
-    public void resetwarnacolose(JPanel panel){
-         panel.setBackground(new java.awt.Color(255,255,255));
-    }
-   
     /**
      * @param args the command line arguments
      */
@@ -470,6 +499,7 @@ public class Tentang extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel_amin;
     private javax.swing.JPanel jPanel_ari;
     private javax.swing.JPanel jPanel_close;
