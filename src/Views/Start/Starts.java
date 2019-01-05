@@ -73,43 +73,22 @@ public class Starts extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-<<<<<<< HEAD:src/Views/Start/Starts.java
         // TODO add your handling code here:
-        //   // TODO add your handling code here:
         UserController cu = new UserController();
         String namas = nama.getText();
         if(cu.create(namas)) {
             Questioner questioner = new Questioner();
             questioner.show();
-=======
-        UserController cu = new UserController();
-        String namas = nama.getText();
-        if(cu.create(namas)) {;
-            Questioner pertanyaan = new Questioner();
-            pertanyaan.show();
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Start/Start.java
             this.dispose();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
-   
-<<<<<<< HEAD:src/Views/Start/Starts.java
+
     private void jPanel_closeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_closeMouseEntered
-        // TODO add your handling code here:
-=======
-    
-//<<<<<<< HEAD
-    private void jPanel_closeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_closeMouseEntered
-        // TODO add your handling code here:
-//        resetwarnacolose(jPanel_close);
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Start/Start.java
+        
     }//GEN-LAST:event_jPanel_closeMouseEntered
 
     private void jPanel_closeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_closeMouseExited
-        // TODO add your handling code here:
-<<<<<<< HEAD:src/Views/Start/Starts.java
-=======
-//        setwarnaclose(jPanel_close);
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Start/Start.java
+        
     }//GEN-LAST:event_jPanel_closeMouseExited
 
     private void jPanel_closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_closeMouseClicked
@@ -121,56 +100,25 @@ public class Starts extends javax.swing.JFrame {
     }//GEN-LAST:event_namaActionPerformed
 
     private void jPanel_mulaiMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mulaiMouseReleased
-        // TODO add your handling code here:
-<<<<<<< HEAD:src/Views/Start/Starts.java
-=======
-//        SetColour(jPanel_mulai);
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Start/Start.java
+        
     }//GEN-LAST:event_jPanel_mulaiMouseReleased
 
     private void jPanel_mulaiMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mulaiMousePressed
-        // TODO add your handling code here:
-<<<<<<< HEAD:src/Views/Start/Starts.java
-=======
-//        resetColour(jPanel_mulai);
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Start/Start.java
+     
     }//GEN-LAST:event_jPanel_mulaiMousePressed
 
     private void jPanel_mulaiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mulaiMouseExited
-        // TODO add your handling code here:
-<<<<<<< HEAD:src/Views/Start/Starts.java
-=======
-//        SetColour(jPanel_mulai);
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Start/Start.java
+        
     }//GEN-LAST:event_jPanel_mulaiMouseExited
 
     private void jPanel_mulaiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mulaiMouseEntered
-        // TODO add your handling code here:
-<<<<<<< HEAD:src/Views/Start/Starts.java
-=======
-//        resetColour(jPanel_mulai);
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Start/Start.java
+        
     }//GEN-LAST:event_jPanel_mulaiMouseEntered
 
     private void jPanel_mulaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel_mulaiMouseClicked
-        // TODO add your handling code here:
-        UserController cu = new UserController();
-        String namas = nama.getText();
-        if(cu.create(namas)) {;
-            Questioner pertanyaan = new Questioner();
-            pertanyaan.show();
-            this.dispose();
-        }
+       
     }//GEN-LAST:event_jPanel_mulaiMouseClicked
 
-<<<<<<< HEAD:src/Views/Start/Starts.java
-=======
-//=======
-//>>>>>>> a969dcc66720069460476dbb7d8e96ed94858414
->>>>>>> d4bc04d6307567ac9a1ee7ef2e6bc16c8e700d02:src/Views/Start/Start.java
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Collections;
 import libs.DBConnect;
+import libs.Session;
 /**
  *
  * @author ThinkPad
@@ -198,6 +199,33 @@ public class QuestionController {
             PreparedStatement stat = connection.prepareStatement(query);
             Integer id = data.getId();
             stat.setInt(1, id);
+            int rs = stat.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+            return false;
+        }
+    }
+    
+    public boolean insertAnswers(ArrayList<CharacteristicModul> most, ArrayList<CharacteristicModul> least) {
+        try {
+            Connection connection = DBConnect.Conn();
+            String query = "INSERT INTO `result` (`user_id`, `characteristic_id`, `type`) VALUES ";
+            Integer user_id = Session.getID();
+            for(CharacteristicModul cm : most){
+                query += "("+user_id+", "+ cm.getId() +", 'most'),";
+            }
+            Integer indexLoop = 1; 
+            for(CharacteristicModul cm : least){
+                if(least.size() == indexLoop){
+                    query += "("+user_id+", "+ cm.getId() +", 'least');";
+                } else {
+                    query += "("+user_id+", "+ cm.getId() +", 'least'),";
+                }
+                indexLoop++;
+            }
+            System.out.println("query: " + query);
+            PreparedStatement stat = connection.prepareStatement(query);
             int rs = stat.executeUpdate();
             return true;
         } catch (SQLException e) {

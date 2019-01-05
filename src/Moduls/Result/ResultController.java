@@ -17,21 +17,47 @@ import libs.DBConnect;
  */
 public class ResultController {
     
-    public ArrayList<ResultModul> getList() {
-        ArrayList<ResultModul> data = new ArrayList<>();
+    public ArrayList<DiscModul> getDiscList() {
+        ArrayList<DiscModul> data = new ArrayList<>();
         try {
             Connection connection = DBConnect.Conn();
-            String sql = "SELECT * FROM result";
+            String sql = "SELECT " +
+                        "   IF(r.type=\"most\", \"S Strength\", \"W Weakness\") as description, " +
+                        "   COUNT(IF(c.type=1, 1, NULL)) AS dominance, " +
+                        "   COUNT(IF(c.type=2, 1, NULL)) AS influence, " +
+                        "   COUNT(IF(c.type=3, 1, NULL)) AS steadiness, " +
+                        "   COUNT(IF(c.type=4, 1, NULL)) AS compliance, " +
+                        "   COUNT(c.type) AS total_nilai " +
+                        "FROM `result` r " +
+                        "JOIN `characteristic` c " +
+                        "   ON r.characteristic_id = c.id " +
+                        "GROUP BY r.type " +
+                        "ORDER BY r.type DESC";
             
             Statement stat = (Statement) connection.createStatement();
             ResultSet rs = stat.executeQuery(sql);
+            DiscModul cm;
             while (rs.next()) {
-                ResultModul cm = null;
-                cm.setId(rs.getInt("id"));
-                cm.setType(rs.getInt("type"));
-                cm.setText(rs.getString("text"));
+                cm = new DiscModul(
+                    rs.getInt("dominance"), 
+                    rs.getInt("influence"),
+                    rs.getInt("steadiness"),
+                    rs.getInt("compliance"),
+                    rs.getInt("total_nilai"),
+                    rs.getString("description")
+                );
                 data.add(cm);
             }
+            cm = null;
+            cm = new DiscModul(
+                data.get(0).getDominance() - data.get(1).getDominance(), 
+                data.get(0).getInfluence() - data.get(1).getInfluence(),
+                data.get(0).getSteadiness() - data.get(1).getSteadiness(),
+                data.get(0).getCompliance() - data.get(1).getCompliance(),
+                data.get(0).getTotal_nilai() - data.get(1).getTotal_nilai(),
+                "S-W (Strength - Weakness)"
+            );
+            data.add(cm);
             return data;
         } catch (SQLException e) {
             System.err.println(e.getMessage());
