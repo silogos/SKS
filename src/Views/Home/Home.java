@@ -7,6 +7,7 @@ package Views.Home;
 
 import Views.Start.Start;
 import Views.Admin.Login;
+import Views.Petunjuk.Petunjuk;
 import Views.Tentang.Tentang;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -28,8 +29,9 @@ public class Home extends javax.swing.JFrame {
     ImageIcon imageIcon;
       public Home() {
         initComponents();
-        imageIcon = new ImageIcon("src/AI/SKSedit.png");
+         imageIcon = new ImageIcon("src/Assets/SKSedit.png");
         setIconImage(imageIcon.getImage());
+       
        
         
         
@@ -173,6 +175,9 @@ public class Home extends javax.swing.JFrame {
         jpanel_petunjuk.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jpanel_petunjuk.setPreferredSize(new java.awt.Dimension(180, 70));
         jpanel_petunjuk.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jpanel_petunjukMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jpanel_petunjukMouseEntered(evt);
             }
@@ -519,6 +524,13 @@ public class Home extends javax.swing.JFrame {
         tentang.show();
         this.dispose();
     }//GEN-LAST:event_jPanel_tentangMouseClicked
+
+    private void jpanel_petunjukMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jpanel_petunjukMouseClicked
+        // TODO add your handling code here:
+        Petunjuk petunjuk = new Petunjuk();
+        petunjuk.show();
+        this.dispose();
+    }//GEN-LAST:event_jpanel_petunjukMouseClicked
 
     /**
      * @param args the command line arguments

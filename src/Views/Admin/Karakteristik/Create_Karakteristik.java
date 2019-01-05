@@ -7,6 +7,8 @@ package Views.Admin.Karakteristik;
 
 import Views.Admin.Karakteristik.Create_Karakteristik;
 import Moduls.Characteristic.CharacteristicController;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -24,10 +26,20 @@ public class Create_Karakteristik extends javax.swing.JFrame {
     /**
      * Creates new form Create_Karakteristik
      */ImageIcon imageIcon;
+     static String a,b,c;
     public Create_Karakteristik() {
         initComponents();
         imageIcon = new ImageIcon("src/Assets/SKSedit.png");
         setIconImage(imageIcon.getImage());
+        ActionListener acl = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               a=jLabel_runningtext.getText();
+               b=a.substring(0, 2);
+               c=a.substring(2, a.length());
+               jLabel_runningtext.setText(c+b);
+            }
+        };new javax.swing.Timer(100, acl).start();
     }
 
     /**
@@ -51,6 +63,7 @@ public class Create_Karakteristik extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel_runningtext = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -154,6 +167,10 @@ public class Create_Karakteristik extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Assets/icons8-anonymous-mask-50.png"))); // NOI18N
 
+        jLabel_runningtext.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        jLabel_runningtext.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel_runningtext.setText("                                                                                Survey Kepribadian Seseorang");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -165,6 +182,10 @@ public class Create_Karakteristik extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel_runningtext, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,7 +198,9 @@ public class Create_Karakteristik extends javax.swing.JFrame {
                         .addComponent(jLabel1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel_runningtext)
+                .addGap(13, 13, 13))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -260,7 +283,7 @@ public class Create_Karakteristik extends javax.swing.JFrame {
 //                    String ambil = (String) cmb_nama.getSelectedItem();
 //                    String Hasil = ambil.substring(0,1);
 //                    int cmb_nama = Integer.parseInt(Hasil);
-                    db.bahasasql = "INSERT INTO characteristic VALUES ('null', '"+cmb_nama.getSelectedItem()+"', '"+txt_deskripsi.getText()+"')";
+                    db.bahasasql = "INSERT INTO characteristic VALUES (null, '"+cmb_nama.getSelectedItem()+"', '"+txt_deskripsi.getText()+"')";
                     db.crud();
                     System.out.println(db.bahasasql);
                     JOptionPane.showMessageDialog(null, "Data Berhasil di Simpan");
@@ -314,6 +337,7 @@ public class Create_Karakteristik extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel_runningtext;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
